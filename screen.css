@@ -1,4 +1,6 @@
-
+html {
+  font-size: 18px;
+}
 body,
 #presentation {
   padding: 0;
@@ -6,16 +8,16 @@ body,
   width: 100%;
   height: 100%;
   position: absolute;
-  left: 0px; 
+  left: 0px;
   top: 0px;
   background-color: #ccf;
- background-image: 
+ background-image:
     linear-gradient(#b8c6df,#6d88b7);
-  background-image: 
-    linear-gradient(to bottom, 
+  background-image:
+    linear-gradient(to bottom,
                     #b8c6df 0%,
                     #6d88b7 100%);
- 
+
 
 }
 
@@ -33,13 +35,13 @@ margin-top: -350px;
     margin-left: -450px;padding: 20px;
     border-radius: 50px 0;
     border: 5px solid #fff;
-  box-shadow: 0 0 20px rgba(0,0,0,0.6), 
+  box-shadow: 0 0 20px rgba(0,0,0,0.6),
               inset 0 0 6px rgba(0,0,0,0.4);
               -moz-box-sizing: border-box;
               box-sizing: border-box;
   transform: scale(0.8);
-       transition: 
-          margin-left 1s, 
+       transition:
+          margin-left 1s,
           transform 1s,
           opacity 2s;
 
@@ -48,32 +50,128 @@ margin-top: -350px;
   border-radius: 0 50px;
 }
 .slide {
-  display: none; 
+  display: none;
   overflow: hidden;
 }
 .past, .current, .future {
-  display: block;   
+  display: block;
 }
 .slide.past    { margin-left: -1400px;}
 .slide.current { margin-left: -450px;}
-.slide.future  { margin-left: 500px;} 
+.slide.future  { margin-left: 500px;}
 body {
     font-family: sans-serif;
 }
 
-:root { font-size: 162.5%;  }
+:root { font-size: 18px;  }
 
 h1    { font-size:1.8rem;   }
 
 pre   { font-size: 1.5rem;  }
- 
+
 p     { font-size: 1.5rem;
         margin: 1rem 0 0 0; }
 
 .slide            {opacity: 0.5;}
 .slide.far-past   {margin-left: -2400px;}
 .slide.past       {margin-left: -1400px;}
-.slide.current    {margin-left: -450px; 
+.slide.current    {margin-left: -450px;
                    opacity: 1;}
 .slide.future     {margin-left: 500px;}
 .slide.far-future {margin-left: 1500px;}
+
+
+.icons {
+  clear: both;
+}
+.icons li,
+.icons .browser {
+      width: 68px;
+      height: 14px;
+      float: left;
+      background-image:url(img/icons.png);
+      border-radius: 32px;
+      font-size: 0.8rem;
+      padding-top: 60px;
+      text-align:center;
+      position: relative;
+      background-repeat: no-repeat;
+      list-style-type: none;
+      font-size: 0.5rem;
+    }
+  .icons li.text {
+    font-size: 1rem; width: auto; height: auto; background: none; padding: 30px;
+  }
+    .icons .firefox {background-position:-80px 0}
+    .icons .ie {background-position:-280px 0}
+    .icons .safari {background-position:-210px 0}
+    .icons .chrome {background-position:0 0 }
+    .icons .opera {background-position:-140px 0}
+    .icons .blackberry  {background-position:-430px 0}
+    .icons .android  {background-position:-360px 0}
+    .icons .new:after {
+      content: "";
+      width: 40px;
+      height: 28px;
+      display:block;
+      position:absolute;
+      top: -8px;
+      right:-10px;
+      background-image:url(../icons/new.gif);
+    }
+    .icons .no {opacity: 0.25;}
+    .icons .bad,
+    .icons .iffy {opacity: 0.60;}
+    .icons .bad {
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+    .icons .bad:after {
+      position:absolute;
+      top: -10px;
+      left:-15px;
+      content: "";
+      -webkit-box-sizing: padding-box;
+      background:
+        -webkit-linear-gradient(135deg,
+          transparent 45%,
+          red 45%,
+          red 55%,
+          transparent 55%);
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 10px solid red;
+      display:block;
+    }
+
+    .icons .half:after {
+      position:absolute;
+      top: 0;
+      right:0;
+      content: "";
+      background-color: #DCe7f3;
+      width: 33px;
+      border-radius: 0 0 50% 0;
+      height: 65px;
+      display:block;
+    }
+    .icons .half.new:after {
+      background-repeat: no-repeat;
+      background-color:transparent;
+      background-image:url(../icons/new.gif),
+      -webkit-linear-gradient(0deg, transparent 30%, #DCe7f3 30%) ;
+      background-image:url(../icons/new.gif),
+      -moz-linear-gradient(0deg, transparent 30%, #DCe7f3 30%) ;
+      background-image:url(../icons/new.gif),
+      -ms-linear-gradient(0deg, transparent 30%, #DCe7f3 30%) ;
+      background-image:url(../icons/new.gif),
+      -o-linear-gradient(0deg, transparent 30%, #DCe7f3 30%) ;
+      background-image:url(../icons/new.gif),
+      linear-gradient(0deg, transparent 30%, #DCe7f3 30%) ;
+      width: 40px;
+
+    }
+    .icons .txt {background-image: none; width: auto; font-size: 1.5rem;}
+
+

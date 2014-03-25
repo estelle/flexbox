@@ -8,23 +8,11 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1" />
     <![endif]-->
     <meta charset="utf-8" />
-    <title>Other Features</title>
+    <title>Flexbox</title>
      <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
-   <link rel="stylesheet" href="css/screen.css" media="projection, screen"/>
-   <link rel="stylesheet" href="css/print.css" media="print"/>
+   <link rel="stylesheet" href="screen.css"/>
  <style>
- .cursors li {
-	width: 170px; height: 70px; line-height:70px;
-	float: left; margin: 0 15px 15px 0;
-	border-radius: 15px; text-align:center;
-	background: linear-gradient(hsl(171, 27%, 80%), hsl(171, 15%, 80%));
-	box-shadow: 3px 3px 3px rgba(0,0,0,0.3), inset 1px 1px #fff;
-	list-style-type: none;
- }
- .cursors ul:last-of-type li {
 
-	background: linear-gradient(hsl(171, 47%, 80%), hsl(171, 35%, 80%));
- }
  div.example {
 display: block;
 padding: 0 10px;
@@ -36,55 +24,6 @@ border: 1px solid rgba(0, 0, 0, 0.2);
 column-rule: 1px solid #bbb;
 margin-bottom: -15px;
 }
-.boxsizing div {
-width: 200px;
-height: 100px;
-padding: 20px;
-border: 5px dashed #C7573A;
-margin: 20px;
-text-align: center;
-background-color: rgba(255, 255, 255, 0.5);
--webkit-box-sizing: content-box;
--moz-box-sizing: content-box;
-box-sizing: content-box;
-white-space: nowrap;
-}.boxsizing:first-of-type {
-margin: 0 10px 0 0;
-}
-.boxsizing {
-float: left;
-border: 1px solid #C7573A;
-margin: 20px 0 20px 20px;
-}
-.boxsizing div.bb {
--webkit-box-sizing: border-box;
--moz-box-sizing: border-box;
-box-sizing: border-box;
-}
-#box-orient-example {
-height: 220px;
-display: -webkit-box;
--webkit-box-orient: horizontal;
-display: -moz-box;
--moz-box-orient: horizontal;
-}
-	/* COLUMNS*/
-
-	#columnsslide {
-            -webkit-column-count: 2;
-            -webkit-column-rule: 1px solid #bbb;
-            -webkit-column-gap: 2em;
-            -moz-column-count: 2;
-            -moz-column-rule: 1px solid #bbb;
-            -moz-column-gap: 2em;
-            column-count: 2;
-            column-rule: 1px solid #bbb;
-            column-gap: 2em;
-          }
-          #columnsslide p {
-            font-size: 15px;
-			font-family:Arial, Helvetica, sans-serif;
-          }
 /* Flexible Box Model */
 #box-orient-example {
   height: 220px;
@@ -128,25 +67,15 @@ display: -moz-box;
 	font-size: 14px;
 }
 
-            .textwrap{width: 94%; height: 1.1em;
- height: 1.1em; overflow: hidden; line-height: 1.1em; margin:0.2em 0}
-
- #origin {
-    -webkit-flow-into: name_of_my_flow;
-    /* style of content */
-    font-size: 0.8rem;
-
+div.divider {
+  clear: both;
 }
-.destination {
-    -webkit-flow-from: name_of_my_flow;
-    /* style of the boxes */
-    width: 50%;
-    border: 1px solid red;
-    box-sizing: border-box;
-    padding: 5px;
-    height: 120px;
-    float: left;
+div.divider .icons,
+div.divider p,
+ {
+  float: left;
 }
+
  </style>
   </head>
   <body>
@@ -171,7 +100,7 @@ display: -moz-box;
 
 <div class="slide normal">
     <header>
-    	<h1 style="font-size:200%;">CSS: from Knowledgable to Ninja</h1>
+    	<h1 style="font-size:200%;">CSS: Flexbox</h1>
     </header>
      <section class="content">
      <p> ◈ Estelle Weyl</p>
@@ -179,169 +108,55 @@ display: -moz-box;
      </section>
     </div>
 
-<!-- OUTLINE -->
-<div class="slide normal">
- <header><h1>Course Outline</h1></header>
- <section class="content">
-  <ol><li><a href="../selectors/">Selectors</a></li>
-    <li><a href="part_02_specificity.html">Specificity</a></li>
-    <li><a href="part_03_generated.html">Generated Content</a></li>
-    <li><a href="part_04_media.html">Media Queries</a></li>
-    <li><a href="part_04_media.html#slide10">Debugging</a></li>
-    <li><a href="part_06_colors.html">Colors &amp; Transparency </a></li>
-    <li><a href="part_07_fonts.html">Fonts / Typography </a></li>
-    <li><a href="part_08_backgrounds.html">Backgrounds &amp; Borders </a></li>
-    <li><a href="../gradients/">Gradients</a></li>
-    <li><a href="part_10_transforms.html">Transforms</a></li>
-    <li><a href="../animation/">Transitions &amp; Animation</a></li>
-<li><a href="part_12_features.html">Other Features</a></li>
-</ol>
- </section>
-</div>
 
 
 
 
-<div class="slide intro">
-     <header><h1>Part 11: Other Features</h1></header>
-</div>
 
 <div class="slide">
-    <header><h1>Topics</h1></header>
-<section>
-  <dl>
-    <dt>CSS Exclusions</dt>
-    <dd>Wrap text so that it completely surrounds elements, instead of limiting elements to floating to the left or right of text.</dd>
-    <dt>CSS Regions</dt>
-    <dd>Take a single stream of HTML content that includes both text and images, and stream that content into multiple empty containers defined in a standard HTML document.</dd>
-    <dt>CSS3 Multi-column Layout</dt>
-    <dd>Flow content into multiple columns that allow for a gap and optional rule between them.</dd>
-    <dt>CSS3 Flexible Box ("Flexbox") Layout</dt>
-    <dd>Take the available space into account when defining box dimensions, thereby enabling relative sizes and positioning.</dd>
-    <dt>CSS3 Grid Layout</dt>
-    <dd>Divide space for major regions of a webpage or web app, and define the relationship between parts of an HTML control in terms of size, position, and layer.</dd>
-    <dt>CSS Device Adaptation</dt>
-  </dl>
-</section>
-</div>
- <div class="slide" id="columnpage">
-          <header> <h1>Columns</h1></header>
-          <section class="content" style="margin-top:0">
-          <pre contenteditable>
-<u></u>column-count: <span id="colcnt">1</span>;      <input id="columncounts" type="range" min="1" max="6" value="2" onChange="changeColumnNoSlider(event)">
-<u></u>column-width: <span id="colwidth">10</span>em;   <input id="columnwidth" type="range" min="5" max="40" step="1" value="10" onChange="changeColumnNoSlider(event)">
-<u></u>column-rule: 1px solid #bbb;
-<u></u>column-gap: <span id="colgap">2</span>em;      <input id="columngaps" type="range" min="0" max="10" step="0.1" value="2" onChange="changeColumnNoSlider(event)"></pre>
-
-            <div id="columnsslide" class="example">
-              <p>Adipisicing rump nostrud exercitation turkey, bresaola deserunt ullamco beef ribs pork loin ball tip pig pork belly nisi. Cillum sunt officia deserunt, beef aliqua ham ut t-bone sed ut consequat shoulder. Nostrud excepteur biltong non, fatback salami incididunt beef cupidatat occaecat. </p>
-              <p>Reprehenderit ham hock labore tri-tip chuck, excepteur ut. Meatball sint enim beef ribs, mollit laborum flank commodo fatback pariatur tail rump eiusmod spare ribs dolore. Ut minim qui, tongue eu short ribs pancetta excepteur incididunt culpa consequat pastrami magna chuck. Flank sunt sint, occaecat ut adipisicing labore turkey laboris in magna.</p>
-
-<p>Chicken bacon meatloaf minim meatball salami sunt spare ribs.</p><p> Bacon sed tail, pork loin pariatur meatloaf hamburger exercitation corned beef shank ex esse sirloin qui beef ribs. Consectetur anim corned beef, cupidatat ex enim tempor. Pariatur consectetur ad, enim ut quis consequat aliquip exercitation jowl tenderloin ham dolore. </p><p>Fugiat excepteur aliqua, cow dolor swine shoulder elit tri-tip shankle. Irure consectetur cow labore, cupidatat exercitation ea jerky ham officia dolore tongue eu aliqua. Ham hock irure beef ribs non, flank sausage eiusmod ham short loin nostrud.
-</p>
-            </div>
-
-<ul class="icons">
-         <li class="chrome">Chrome</li>
-         <li class="safari">Safari 3.1</li>
-         <li class="firefox">Firefox 2</li>
-         <li class="opera">Opera 11</li>
-         <li class="ie new">IE 10</li>
-         <li class="txt"><span onClick="vendorPrefix('w', 'columnpage')">-webkit-</span><span onClick="vendorPrefix('r', 'columnpage')"> and </span> <span onClick="vendorPrefix('m', 'columnpage')">-moz-</span>required</li>
-     </ul>
-          </section>
-
-          <script defer="">
-            function changeColumnNoSlider(event) {
-			  var columngaps = roundNumber(document.getElementById('columngaps').value, 1);
-			  var columnwidth = document.getElementById('columnwidth').value;
-              var count =  document.getElementById('columncounts').value;
-              document.getElementById('colgap').textContent = columngaps;
-              document.getElementById('colwidth').textContent = columnwidth;
-              document.getElementById('colcnt').textContent = count;
-              var example = document.getElementById('columnsslide');
-              example.style.webkitColumnCount = count;
-              example.style.MozColumnCount = count;
-              example.style.webkitColumnGap = columngaps + "em";
-              example.style.MozColumnGap = columngaps + "em";
-              example.style.webkitColumnWidth = columnwidth + "em";
-              example.style.MozColumnWidth = columnwidth + "em";
-            }
-			function roundNumber(num, dec) {
-				var result = Math.round(num*Math.pow(10,dec))/Math.pow(10,dec);
-				return result;
-			}
-          </script>
-</div>
-
-<div class="slide">
-	<header><h1>box-sizing</h1></header>
+  <header><h1>Browser support</h1></header>
     <section class="content">
-    <pre contenteditable>box-sizing: content-box | border-box</pre>
-    <div class="boxsizing"><div>content-box</div></div>
-    <div class="boxsizing"><div class="bb">border-box</div></div>
-<pre contenteditable style="float:left; margin-top:0;">div {
-width: 200px;
-height:100px;
-padding: 20px;
-margin:20px;
-border-width: 5px;
-}
-</pre>
 
-    <div class="boxsizing"><div class="bb">border-box</div></div>
-<div style="float:left"><ul><li style="list-style-type:none;">-webkit- Safari 5 and older</li>
-<li style="list-style-type:none;">-moz- for all Firefox versions</li></ul>
- <ul class="icons">
-         <li class="chrome">Chrome</li>
-         <li class="safari">Safari 3.1/5.1</li>
-         <li class="firefox">Firefox 2/8</li>
-         <li class="opera">Opera 9.5</li>
-         <li class="ie">IE 8</li>
+<div class="divider">
+     <pre>display: box;</pre>
+     <ul class="icons">
+
+         <li class="chrome ">Chrome</li>
+         <li class="firefox ">Firefox 2</li>
+         <li class="safari ">Safari 3+</li>
+         <li class="android ">Android</li>
+         <li class="blackberry">Blackberry v7+</li>
+
+         <li class="text">prefix for all</li>
      </ul>
 </div>
-<p class="notes" style="clear:both">border-box replicates the old IE box model</p>
+
+<div class="divider">
+     <pre>display: flexbox;</pre>
+     <ul class="icons">
+         <li class="ie  ">IE 10</li>
+         <li class="text">-ms- for IE 10</li>
+     </ul>
+</div>
+
+<div class="divider">
+     <pre>display: flex;</pre>
+     <ul class="icons">
+         <li class="chrome ">Chrome</li>
+         <li class="safari ">Safari 6+</li>
+         <li class="firefox ">Firefox</li>
+         <li class="opera ">Opera</li>
+         <li class="ie  new">IE 11</li>
+         <li class="android ">Android 4.4</li>
+         <li class="blackberry">Blackberry 10+</li>
+         <li class="text">Prefix for BB and Safari</li>
+     </ul>
+</div>
+
     </section>
 </div>
 
-<div class="slide">
-  <header><h1>CSS Regions</h1></header>
-    <section class="content">
-<pre contenteditable>&lt;div id="origin">[content here]&lt;/div>
-&lt;div class="destination">&lt;/div>
-&lt;div class="destination">&lt;/div>
-&lt;div class="destination">&lt;/div>
-&lt;div class="destination">&lt;/div>​</pre>
-<pre contenteditable>#origin {
-    -webkit-flow-into: name_of_my_flow;
-    /* style of content */
-}
-.destination {
-    -webkit-flow-from: name_of_my_flow;
-    /* style of boxes */ <input type="range" min="0" max="50" onchange="regions(this.value)">
-}</pre>
-</section>
-<div id="origin"><p>The content here is originally in the #origin div, inside a p. However, it shows up divided amongst the .destination blocks. Try changing the width of the .destination divs with the slider and watch the text move. The styles are inherited from #origin and #origin's ancestors, and not from any .destination specific properties.</p></div>
-<div class="destination"></div>
-<div class="destination"></div>
-<div class="destination"></div>
-<div class="destination"></div>​
-<script defer>
-  function regions(val){
-    var destinations = document.querySelectorAll('.destination');
-    for(var i=0; i < 4; i++){
-        destinations[i].style.width = val + '%';
-    }
-  }
-</script>
-</div>
 
-<div class="slide">
-  <header><h1>CSS Exclusions</h1></header>
-    <section class="content">
-      <h1>Only supported, prefixed, in IE 10</h1>
-    </section>
-</div>
 
  <div class="slide">
 	<header><h1>OLD Flexible Box Model</h1></header>
@@ -356,14 +171,9 @@ border-width: 5px;
 }
 .box .three {
   box-flex: 3;
-}</pre>   <ul class="icons" style="float: left;">
-         <li class="chrome half">Chrome</li>
-         <li class="safari half">Safari 3.1</li>
-         <li class="firefox half">Firefox 2</li>
-         <li class="opera bad">Opera 12</li>
-         <li class="ie new half">IE 10</li>
-         <li class="txt">-webkit-, -moz-, -ms- required</li>
-     </ul>
+}</pre>
+
+
 
           <div id="box-orient-example" class="example">
             <div>
@@ -376,7 +186,14 @@ border-width: 5px;
               Box three
             </div>
           </div>
-
+<ul class="icons">
+     <li class="chrome ">Chrome</li>
+     <li class="firefox ">Firefox 2</li>
+     <li class="safari ">Safari 3+</li>
+     <li class="android ">Android</li>
+     <li class="blackberry">Blackberry v7+</li>
+     <li class="text">prefix for all</li>
+ </ul>
           <script defer="">
             function changeBoxOrient(event) {
               var el = document.getElementById('box-orient-example');
@@ -502,6 +319,17 @@ border-width: 5px;
           <dt> order</dt>
           <dd>Controls order of flex items within flex container</dd>
         </dl>
+    </section>
+</div>
+
+<div class="slide">
+  <header><h1>Steps</h1></header>
+    <section class="content">
+<ol>
+  <li>Add <code>display: flex;</code> to the parent of the elements to be flexed.</li>
+  <li>Set <code>flex-direction</code> to horizontal or vertical</li>
+  <li>Set <code>flex-wrap</code> to control wrap direction</li>
+<ol>
     </section>
 </div>
 
@@ -780,7 +608,6 @@ small {
 
 
   </div>
-<script src="css/prefixfree.js"></script>
-  <script src="css/slide.js"></script>
+  <script src="slides.js"></script>
   </body>
 </html>
