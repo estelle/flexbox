@@ -1,82 +1,11 @@
 <!doctype html>
 <html>
   <head>
-    <!--[if gte IE 9]>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <![endif]-->
-    <!--[if lt IE 9]>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1" />
-    <![endif]-->
     <meta charset="utf-8" />
-    <title>Flexbox</title>
+    <title>CSS: Flexbox</title>
      <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
    <link rel="stylesheet" href="screen.css"/>
- <style>
 
- div.example {
-display: block;
-padding: 0 10px;
-background: rgba(255, 255, 255, 0.4);
--moz-border-radius: 8px;
-border-radius: 8px;
-font-size:14px;
-border: 1px solid rgba(0, 0, 0, 0.2);
-column-rule: 1px solid #bbb;
-margin-bottom: -15px;
-}
-/* Flexible Box Model */
-#box-orient-example {
-  height: 220px;
-  display: -webkit-box; -webkit-box-orient: horizontal;
-  display: -moz-box; -moz-box-orient: horizontal;
-}
-#box-orient-example div:nth-child(1) {
-  background: white; padding: 10px; -webkit-box-flex: 1;
-  -moz-box-flex: 1; text-align: center;
-}
-#box-orient-example div:nth-child(2) {
-  background: #ddd; padding: 10px; -webkit-box-flex: 1;
-  -moz-box-flex: 1; text-align: center;
-}
-#box-orient-example div:nth-child(3) {
-  background: white; padding: 10px; -webkit-box-flex: 3;
-  -moz-box-flex: 3; text-align: center;
-}
-
- #box-orient-example-2 {
-	height: 200px;
-	display: -moz-box;
-	-moz-box-pack: center;
-	-moz-box-align: center;
-	-moz-box-orient: horizontal;
-
-	display: -webkit-box;
-	-webkit-box-pack: center;
-	-webkit-box-align: center;
-	-webkit-box-orient: horizontal;
-
-	display: -ms-box;
-	-ms-box-pack: center;
-	-ms-box-align: center;
-	-ms-box-orient: horizontal;
-}
-#box-orient-example-2 div, #box-orient-example-2 textarea {
-	background: #ddd;
-	padding: 10px;
-	width: 200px;
-	font-size: 14px;
-}
-
-div.divider {
-  clear: both;
-}
-div.divider .icons,
-div.divider p,
- {
-  float: left;
-}
-
- </style>
   </head>
   <body>
 
@@ -87,7 +16,7 @@ div.divider p,
   <div id="info">
     <p>
     <span class="key">&rarr;</span> and <span class="key">&rarr;</span> to change slides.
-    <span class="key">2</span> for comments. <a href="http://estelle.github.com/CSS-Workshop">estelle.github.com/CSS-Workshop</a>
+    <span class="key">2</span> for comments. <a href="http://estelle.github.io/flexbox">estelle.github.io/flexbox</a>
     </p>
   </div>
 
@@ -109,57 +38,64 @@ div.divider p,
     </div>
 
 
+<div class="slide object">
+<header><h1>Problem we're trying to solve</h1></header>
+<object data="flexfiles/float.html"></object>
+<a href="flexfiles/float.html" target="play" class="objectlink">Open in separate window</a>
+</div>
 
 
+<div class="slide object">
+<header><h1>Flex Box</h1></header>
+<object data="flexfiles/textflex.html"></object>
+<a href="flexfiles/textflex.html" target="play" class="objectlink">Open in separate window</a>
+</div>
 
 
+<!-- General Browser Support -->
 <div class="slide">
   <header><h1>Browser support</h1></header>
     <section class="content">
-
-<div class="divider">
-     <pre>display: box;</pre>
-     <ul class="icons">
-
-         <li class="chrome ">Chrome</li>
-         <li class="firefox ">Firefox 2</li>
-         <li class="safari ">Safari 3+</li>
-         <li class="android ">Android</li>
-         <li class="blackberry">Blackberry v7+</li>
-
-         <li class="text">prefix for all</li>
-     </ul>
-</div>
-
-<div class="divider">
-     <pre>display: flexbox;</pre>
-     <ul class="icons">
-         <li class="ie  ">IE 10</li>
-         <li class="text">-ms- for IE 10</li>
-     </ul>
-</div>
-
-<div class="divider">
-     <pre>display: flex;</pre>
-     <ul class="icons">
-         <li class="chrome ">Chrome</li>
-         <li class="safari ">Safari 6+</li>
-         <li class="firefox ">Firefox</li>
-         <li class="opera ">Opera</li>
-         <li class="ie  new">IE 11</li>
-         <li class="android ">Android 4.4</li>
-         <li class="blackberry">Blackberry 10+</li>
-         <li class="text">Prefix for BB and Safari</li>
-     </ul>
-</div>
-
+      <div class="divider">
+           <p>V1: <code>display: box;</code></p>
+           <ul class="icons">
+               <li class="chrome ">Chrome</li>
+               <li class="firefox ">Firefox 2</li>
+               <li class="safari ">Safari 3+</li>
+               <li class="android ">Android</li>
+               <li class="blackberry">Blackberry v7+</li>
+               <li class="text">prefix for all</li>
+           </ul>
+      </div>
+      <div class="divider">
+           <p>V2: <code>display: flexbox;</code></p>
+           <ul class="icons">
+               <li class="ie  ">IE 10</li>
+               <li class="text">-ms- for IE 10</li>
+           </ul>
+      </div>
+      <div class="divider">
+           <p>Final: <code>display: flex;</code></p>
+           <ul class="icons">
+               <li class="chrome ">Chrome</li>
+               <li class="safari ">Safari 6+</li>
+               <li class="firefox ">Firefox</li>
+               <li class="opera ">Opera</li>
+               <li class="ie  new">IE 11</li>
+               <li class="android ">Android 4.4</li>
+               <li class="blackberry">Blackberry 10+</li>
+               <li class="text">Prefix for BB and Safari</li>
+           </ul>
+      </div>
     </section>
 </div>
 
 
 
+
+<!-- The Original Box Model explained -->
  <div class="slide">
-	<header><h1>OLD Flexible Box Model</h1></header>
+	<header><h1>Flexible Box Model: V1</h1></header>
     <section class="content">
     <p>Used to position horizontal and vertical stacks.</p>
 <pre contenteditable style="float: left; margin: 0 10px 0 0;">.box {
@@ -207,8 +143,16 @@ div.divider p,
 
 
 
+
+
+
+
+
+
+
+<!-- The Original Box Model explained: Part 2 -->
 <div class="slide">
-	<header><h1>OLD Flexible Box Model</h1></header>
+	<header><h1>Flexible Box Model: V1</h1></header>
     <section class="content">
 <pre contenteditable>.box {
   display: <b>box</b>;
@@ -238,8 +182,13 @@ div.divider p,
     </section>
 </div>
 
+
+
+
+
+<!-- The Original Box Model explained: Part 3 -->
 <div class="slide">
-	<header><h1>Old FlexBox Properties</h1></header>
+	<header><h1>Flexible Box Model: V1</h1></header>
     <section class="content">
 <pre contenteditable class="new">display: box ;</pre>
 
@@ -263,8 +212,17 @@ div.divider p,
     </section>
 </div>
 
+
+
+
+
+
+
+
+
+<!-- -ms- version of  Box Model -->
 <div class="slide">
-	<header><h1>Medium FlexBox Properties</h1></header>
+	<header><h1>Flexible Box Model: V2</h1></header>
     <section class="content">
 <pre contenteditable class="new">display: flexbox | inline-flexbox;</pre>
 
@@ -289,35 +247,63 @@ div.divider p,
     </section>
 </div>
 
+
+
+<div class="slide intro">
+  <header><h1>Actual Flex Box</h1></header>
+    <section class="content">
+      <p>CSS Flexible Box Layout Module</p>
+      <a href="http://www.w3.org/TR/css3-flexbox/">www.w3.org/TR/css3-flexbox/</a>
+    </section>
+</div>
+
+
+
+
 <div class="slide">
-  <header><h1>NEWER Flexible Box Model</h1></header>
+  <header><h1>Flexible Box Model: Final</h1></header>
     <section class="content">
        <p>Related properties:</p>
         <dl class="deprecated listed">
+
           <dt> display</dt>
-          <dd>New values include <code>flex</code> and <code>inline-flex</code> to create a flex container (on parent).</dd>
+          <dd>Values include <code>flex</code> and <code>inline-flex</code>. Used on parent to create the flex container.</dd>
+
           <dt> align-content</dt>
+
           <dt> align-items</dt>
+
           <dt> align-self</dt>
+
           <dt> flex</dt>
-          <dd> Shorthand for flex-basis, flex-grow, and flex-shrink<dd>
+          <dd> Shorthand for <code>[flex-basis  flex-grow, and flex-shrink</code>, or <code>none</code><dd>
+
           <dt> flex-basis</dt>
           <dd> default = auto</dd>
+
           <dt> flex-direction</dt>
           <dd> Set the containers axis for its children with <code>row</code>, <code>row-reverse</code>, <code>column</code> or <code>columns-reverse</code> on the parent</dd>
+
           <dt> flex-flow</dt>
           <dd>Shorthand for <code>flex-direction</code> and <code>flex-wrap</code> properties.</dd>
+
           <dt> flex-grow</dt>
-          <dd> determines how much flex item will grow relative to  other flex items in flex container when positive free space is distributed. default is 1 for container 0 for children. Positive only</dd>
+          <dd>Positive number determines how much flex item will grow relative to  other flex items in flex container when positive free space is distributed. default is 1 for container.  0 for children. Positive only</dd>
+
           <dt> flex-shrink</dt>
-          <dd>determines how much  flex item will shrink relative to  other flex items in flex container when negative free space is distributed. default = 1</dd>
+          <dd>Positive number determines how much flex item will shrink relative to  other flex items in flex container when negative free space is distributed. default is 1</dd>
+
           <dt> flex-wrap</dt>
           <dd> To determine whether the boxes are single line or wrap, and the direction, use <code>nowrap</code>, <code>wrap</code> or <code>wrap-reverse</code></dd>
+
           <dt> justify-content</dt>
+
           <dt> min-height</dt>
+
           <dt> min-width</dt>
-          <dt> order</dt>
-          <dd>Controls order of flex items within flex container</dd>
+
+          <dt>order</dt>
+          <dd>Integer. Controls order of flex item within flex container</dd>
         </dl>
     </section>
 </div>
@@ -333,274 +319,131 @@ div.divider p,
     </section>
 </div>
 
-<div class="slide object">
-<header><h1>Newest Flexible Box Model</h1></header>
-<object data="files/12_flexbox.html"></object>
-<a href="files/12_flexbox.html" target="play" class="objectlink">Open in separate window</a>
-</div>
 
-<div class="slide" id="gridlayout">
-	<header><h1>grid layout</h1></header>
+<div class="slide">
+  <header><h1><code>display</code> property</h1></header>
     <section class="content">
-    <p>Using grid system to lay out content, dividing available space into columns and rows</p>
-    <pre contenteditable style="float: right; margin: 0 0 0 20px"><u></u>grid-columns:
-<u></u>grid-rows:
-<u></u>grid-column:
-<u></u>grid-row:
-<u></u>grid-cell:
-<u></u>grid-cell-stacking:
-<u></u>grid-template:
-<u></u>grid-column-span:
-<u></u>grid-row-span:
-<u></u>grid-column-sizing:
-<u></u>grid-row-sizing:
-<u></u>grig-flow:
-<u></u>grid-column-align:
-<u></u>grid-row-align:
-<u></u>grid-layer:
-</pre>
-<div style="float:left; width: 480px; margin-right: -40px">
+      <p><code>
+          inline | block | list-item | inline-list-item | inline-block | table | inline-table | table-cell | table-caption | <strong>flex | inline-flex</strong> | grid | inline-grid</code>
+        </li>
+      </ul>
 
-<p style="font-size: 18px;"><a href="http://www.w3.org/TR/css3-grid-layout/">W3C Specifications</a></p>
-    <pre contenteditable>display: <u></u>grid | <u></u>inline-grid </pre>
+      <pre><strong>display: flex;</strong></pre>
+      <p>block-level flex container box</p>
+      <pre><strong>display: inline-flex;</strong></pre>
+      <p>inline-level flex container box</p>
 
-    <ul class="icons">
-         <li class="chrome bad">Chrome</li>
-         <li class="safari bad">Safari 3.1</li>
-         <li class="firefox bad">Firefox 2</li>
-         <li class="opera bad">Opera 12</li>
-         <li class="ie new">IE 10</li>
-         <li class="txt"><span onClick="vendorPrefix('ms', 'gridlayout')">-ms-</span> required</li>
-     </ul>
-</div>
     </section>
 </div>
 
 
 <div class="slide object">
-<header><h1>Shaders</h1></header>
-<object data="http://html5-demos.appspot.com/static/css/filters/index.html"></object>
-<a href="http://html5-demos.appspot.com/static/css/filters/index.html" target="play" class="objectlink">Visit Site</a>
-</div>
-
-<div class="slide ">
-<header><h1>Shadow DOM</h1></header>
-
-<input type="range" min="10" max="20" step="0.1">
-<a href="http://blog.romanliutikov.com/coding/discover-the-dark-side-with-shadow-dom/" target="play" class="objectlink">Visit Site</a>
-</div>
-
-<div class="slide normal cursors" style="padding: 0">
-     <header><h1>Cursors</h1></header>
-     <section class="content">
-			<ul>
-				<li style="cursor:crosshair">crosshair</li>
-				<li  style="cursor:default">default</li>
-				<li  style="cursor:help">help</li>
-				<li  style="cursor:move">move</li>
-				<li  style="cursor:e-resize">e-resize</li>
-				<li  style="cursor:ne-resize">ne-resize</li>
-				<li  style="cursor:nw-resize">nw-resize</li>
-				<li  style="cursor:n-resize">n-resize</li>
-				<li  style="cursor:se-resize">se-resize</li>
-				<li  style="cursor:sw-resize">sw-resize</li>
-				<li  style="cursor:s-resize">s-resize</li>
-				<li  style="cursor:w-resize">w-resize</li>
-				<li  style="cursor:text">text</li>
-				<li  style="cursor:wait">wait</li>
-				<li  style="cursor:progress">progress</li>
-			</ul>
-			<ul>
-				<li  style="cursor:none">none</li>
-				<li  style="cursor:context-menu">context-menu</li>
-				<li  style="cursor:cell">cell</li>
-				<li  style="cursor:vertical-text">vertical-text</li>
-				<li  style="cursor:alias">alias</li>
-				<li  style="cursor:copy">copy</li>
-				<li  style="cursor:no-drop">no-drop</li>
-				<li  style="cursor:not-allowed">not-allowed</li>
-				<li  style="cursor:col-resize">col-resize</li>
-				<li  style="cursor:row-resize">row-resize</li>
-				<li  style="cursor:all-scroll">all-scroll</li>
-				<li  style="cursor:zoom-in">zoom-in</li>
-				<li  style="cursor:zoom-out">zoom-out</li>
-			</ul>
-     </section>
+  <object data="http://codepen.io/estelle/pen/KCzfH/"></object>
+  <a href="http://codepen.io/estelle/pen/KCzfH/" class="objectlink" target="_new">Visit Site</a>
  </div>
 
 
-
-
-
-
-<div class="slide">
-	<header><h1>text-overflow: ellipsis</h1></header>
-    <section class="content">
-          <section>
-            <pre contenteditable>p {
-  text-overflow: ellipsis; <input type="range" min="0" max="100" value="94" onChange="changeWrapping(event)" style="float:right">
-  white-space: nowrap;
-  overflow: hidden;
-}</pre>
-
-            <div id="textwraps">
-              <p class="textwrap codelike">
-                overflow-hidden only: Play with the slider to see what happens at the end of the line
-              </p>
-              <p style=" white-space:nowrap" class="textwrap codelike">
-                white-space: nowrap, overflow: hidden: Play with the slider to see what happens at the end of the line
-              </p>
-              <p style="text-overflow: ellipsis;  white-space: nowrap; " class="textwrap codelike">
-                text-overflow: ellipsis;  white-space: nowrap; and overflow: hidden: Play with the slider to see what happens at the end of the line
-              </p>
-            </div>
-            <p class="notes">Needs nowrap and overflow:hidden (anything other than visible) to work. Prefix in Opera</p>
-  <ul class="icons" style="clear: both;">
-         <li class="chrome">Chrome</li>
-         <li class="safari">Safari</li>
-         <li class="firefox new">Firefox 7</li>
-         <li class="opera">Opera 11</li>
-         <li class="ie">IE 6</li>
-     </ul>
-          </section>
-
-          <script defer="">
-            function changeWrapping(event) {
-              document.getElementById('textwraps').style.width = event.target.value + '%';
-            }
-          </script>
-    </section>
-</div>
-
-<div class="slide">
-	<header><h1>word-wrap: breakword</h1></header>
-    <section class="content">
-    <pre contenteditable>word-wrap:  normal | break-word</pre>
-    <div style="width: 10em; word-wrap:break-word;" class="codelike">
-    Despite the old adage, smiles is not longer than supercalifragilisticexpialidocious.
-    </div>
-      <ul class="icons" style="clear: both;">
-         <li class="chrome">Chrome 1</li>
-         <li class="safari">Safari 1</li>
-         <li class="firefox">Firefox 3.5</li>
-         <li class="opera">Opera 10.5</li>
-         <li class="ie">IE 5.5</li>
-     </ul>
-    </section>
+<div class="slide object">
+<header><h1><code>display</code> property</h1></header>
+<object data="flexfiles/display.html"></object>
+<a href="flexfiles/display.html" target="play" class="objectlink">Open in separate window</a>
 </div>
 
 
 <div class="slide">
-	<header><h1>calc()</h1></header>
+  <header><h1><code>flex-direction</code> property</h1></header>
     <section class="content">
-    <ul class="icons" style="clear: both;">
-         <li class="chrome bad">Chrome</li>
-         <li class="safari bad">Safari</li>
-         <li class="firefox new">Firefox 4</li>
-         <li class="opera bad">Opera 11</li>
-         <li class="ie ">IE 9</li>
-     </ul>
-<pre contenteditable>.colA {
-  width:50%;
-  margin-right: 1em;
-}
-.colB {
-  width: -moz-calc(50% - 1em);
-}</pre>
-     <ul>
-        <li>+, -, *, /, mod, min, and max operators.</li>
-     	<li>Vendor prefixed in Firefox, not in MS</li>
-     	<li>Not yet ready for production</li>
-        <li><a href="http://hacks.mozilla.org/2010/06/css3-calc/">Intro to calc()</a></li>
-        </ul>
+      <p><code><strong>row</strong> | row-reverse | column | column-reverse</code></p>
     </section>
 </div>
 
+
+<div class="slide object">
+<header><h1><code>flex-driection: ... </code></h1></header>
+<object data="flexfiles/direction.html"></object>
+<a href="flexfiles/direction.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+
 <div class="slide">
-	<header><h1>rem</h1></header>
+  <header><h1><code>flex-wrap</code> property</h1></header>
     <section class="content">
-    <pre contenteditable>html {
-    font-size: 62.5%;
-}
-p {
-    font-size: 13px;
-    font-size: 1.3rem;
-}
-small {
-    font-size: 11px;
-    font-size: 1.1rem;
-}</pre>
-
-    <ul class="icons" style="clear: both;">
-         <li class="chrome">Chrome 6</li>
-         <li class="safari">Safari 5</li>
-         <li class="firefox">Firefox 3.6</li>
-         <li class="opera">Opera 11.6</li>
-         <li class="ie ">IE 9</li>
-     </ul>
-     <ul>
-       <li><a href="http://snook.ca/archives/html_and_css/font-size-with-rem">Article on rem</a></li><li><a href="http://www.standardista.com/css3/css-values-lengths-times-frequenc-angles">Article on units of measurement</a></li></ul>
-
+      <p><code><strong>nowrap</strong> | wrap | wrap-reverse</code></p>
+      <p>Purpose: is the whole shebang on one line, or can it wrap if necessary</p>
     </section>
+</div>
+
+<div class="slide object">
+<header><h1><code>flex-wrap: ...</code></h1></header>
+<object data="flexfiles/flexwrap.html"></object>
+<a href="flexfiles/flexwrap.html" target="play" class="objectlink">Open in separate window</a>
 </div>
 
 
 
 
+<div class="slide">
+  <header><h1><code>flext-flow</code> property</h1></header>
+    <section class="content">
+      <p>Shorthand for <code>flex-direction</code> and <code>flex-wrap</code>
+    </section>
+</div>
 
 
-
- <div class="slide normal">
-     <header><h1>pointer-events: none;</h1></header>
-     <section class="content">
-     <p>Can the element be clicked?!?!</p>
-     <pre class="contenteditable" style="font-size: 140%">.animatedElement {
-  pointer-events: none;
-}</pre>
-<p>Did you note that you could change the transforms examples even when the example was covering the code?</p>
- <ul class="icons" style="clear: both;">
-         <li class="chrome">Chrome</li>
-         <li class="safari">Safari</li>
-         <li class="firefox">Firefox</li>
-         <li class="opera">Opera 15</li>
-         <li class="ie new">IE 11</li>
-     </ul>
-     </section>
- </div>
-
-
-
-
-  <div class="slide normal">
-     <header><h1>-webkit-user-modify</h1></header>
-     <section class="content">
-<p>Related to <em>contentEditable</em>: Determines whether content of an element is editable.
-
-<pre contenteditable>
--webkit-user-modify: read-only | read-write | read-write-plaintext-only;
--moz-user-modify: read-only | read-write | write-only;</pre>
-<dl>
-<dt>read-only</dt>
-<dd>The content is read-only.</dd>
-
-<dt>read-write</dt>
-<dd>The content can be read and written.</dd>
-<dt>write-only (moz only)</dt>
-<dd>The user is able to edit the content, but not to read it.</dd>
-
-<dt>read-write-plaintext-only (webkit)</dt>
-<dd>The content can be read and written, but any rich formatting of pasted text is lost.</dd>
-</dl>
-
-     </section>
- </div>
+<div class="slide object">
+<header><h1><code>flex-flow: ...</code></h1></header>
+<object data="flexfiles/flexflow.html"></object>
+<a href="flexfiles/flexflow.html" target="play" class="objectlink">Open in separate window</a>
+</div>
 
 
 
 
 <div class="slide intro">
-     <header><h1>The End</h1></header>
-    <h1><a href="index.html">Home ➹</a></h1>
+  <header><h1>"But wait, there's more!"</h1>
+    <h2>--Ed Valenti</h2></header>
+    <section class="content">
+    </section>
+</div>
+
+
+<div class="slide">
+  <header><h1><code>order</code> property</h1></header>
+    <section class="content">
+      <pre>div:nth-of-type(3n) {
+   order: -1;
+}</pre>
+<p>The default value is 0. Anything lower will come before those without set values. Anything above will come after.</p>
+    </section>
+</div>
+
+
+<div class="slide object">
+<header><h1><code>order: ...</code></h1></header>
+<object data="flexfiles/order.html"></object>
+<a href="flexfiles/order.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+<div class="slide">
+  <header><h1><code>flex</code> shorthand</h1></header>
+    <section class="content def">
+      <p><code>flex-grow</code>:
+how much the flex item will grow relative to the rest of the flex items when free space is distributed. default: 1.</p>
+
+<p><code>flex-shrink</code>:
+how much the flex item will shrink relative to the rest of the flex items in the flex container when negative free space is distributed. default: 1. The flex shrink factor is multiplied by the flex basis when distributing negative space.</p>
+
+<p><code>flex-basis</code>:
+the initial main size of the flex item, before free space is distributed. If set to <code>auto</code>, sets to flex item’s main size property. </p>
+    </section>
+</div>
+
+<div class="slide object">
+<header><h1>Flex Box</h1></header>
+<object data="flexfiles/finalflex.html"></object>
+<a href="flexfiles/finalflex.html" target="play" class="objectlink">Open in separate window</a>
 </div>
 
 
