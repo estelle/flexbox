@@ -288,3 +288,17 @@ margin-bottom: -15px;
   font-size: 14px;
 }
 
+#selectors ul {
+  display: flex;
+  border: 1px #ccc solid;
+  margin: 1rem 0;
+  line-height: 2rem;
+  padding: 0;
+}
+#selectors li {flex: 1; list-style-type: none; text-align: center;}
+#selectors  li:nth-of-type(odd) {
+background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 50%), -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.2) 40%), -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.2) 60%), -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 50%), -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.2) 40%), -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.2) 60%), -webkit-linear-gradient(left, #F00 14%, #FFA500 15%, #FFA500 28%, #FF0 29%, #FF0 42%, #008000 43%, #008000 56%, #00F 57%, #00F 70%, #F0F 71%, #F0F 85%, #800080 86%), #FFF;
+-webkit-background-size: 1px 50%, 1px 50px, 32px, 120px, 80px, 70px, 500px;
+color: #FFF;
+}
+

@@ -430,15 +430,104 @@
   <header><h1><code>flex</code> shorthand</h1></header>
     <section class="content def">
       <p><code>flex-grow</code>:
-how much the flex item will grow relative to the rest of the flex items when free space is distributed. default: 1.</p>
+How to divide the extra space. default: 1.</p>
 
 <p><code>flex-shrink</code>:
-how much the flex item will shrink relative to the rest of the flex items in the flex container when negative free space is distributed. default: 1. The flex shrink factor is multiplied by the flex basis when distributing negative space.</p>
+How to shrink if there's not enough room. default: 1. </p>
 
 <p><code>flex-basis</code>:
-the initial main size of the flex item, before free space is distributed. If set to <code>auto</code>, sets to flex item’s main size property. </p>
+the
+starting size
+before free
+space is
+distributed. length value or <code>auto</code> . If set to <code>auto</code>, sets to flex item’s main size property. </p>
     </section>
 </div>
+
+<div class="slide object">
+<header><h1><code>flex</code> shorthand property</h1></header>
+<object data="flexfiles/flex.html"></object>
+<a href="flexfiles/flex.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+<div class="slide object">
+<header><h1><code>flex</code> gotcha!</h1></header>
+<object data="flexfiles/flex3.html"></object>
+<a href="flexfiles/flex3.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+<div class="slide">
+  <header><h1><code>justify-content</code> property</h1></header>
+    <section class="content">
+      <p><code><strong>flex-start</strong> | flex-end | center | space-between | space-around</code></p>
+      <p>aligns flex items</p>
+    </section>
+</div>
+
+
+<div class="slide object">
+<header><h1><code>justify-content</code> property</h1></header>
+<object data="flexfiles/justify.html"></object>
+<a href="flexfiles/justify.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+<div class="slide">
+  <header><h1><code>align-items, align-content</code> properties</h1></header>
+    <section class="content">
+      <p><code>
+flex-start | flex-end | center | baseline | <strong>stretch</strong></code></p>
+    </section>
+</div>
+
+
+
+
+<div class="slide object">
+<header><h1><code>align-items</code> property</h1></header>
+<object data="flexfiles/align.html"></object>
+<a href="flexfiles/align.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+
+
+
+
+
+
+<div class="slide">
+  <header><h1>Remember This?</h1></header>
+    <section class="content" id="selectors">
+<ul>
+  <li>1</li>
+</ul>
+<ul>
+  <li>1</li>
+  <li>2</li>
+</ul>
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+</ul>
+
+<pre>ul {
+  display: flex;
+}
+li {
+  flex: 1;
+}</pre>
+    </section>
+</div>
+
 
 <div class="slide object">
 <header><h1>Flex Box</h1></header>
