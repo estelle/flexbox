@@ -318,18 +318,31 @@ function loadCIU(e){
 </div>
 
 <div class="slide">
+<header><h1>What is a flex item</h1></header>
    <section class="content">
-   <p>Flex items
+   <p>Flex items</p>
    <ol>
       <li>All non-absolutely positioned child nodes</li>
       <li>Generated Content</li>
       <li>anonymous flex items => non-empty text nodes</li>
    </ol>
-   <p>Not flex items
+   <p>Not flex items</p>
    <ol>
    <li>::first-line &amp; ::first-letter</li>
    <li>absolutely/fixed positioned elements</li>
    <li>white space</li>
+   </ol>
+</section>
+</div>
+
+<div class="slide">
+<header><h1>Impacted CSS Properties</h1></header>
+   <section class="content">
+   <p>Changed Properties</p>
+   <ol>
+      <li><code>margin</code>: adjacent flex items margins do not collapse</li>
+      <li><code>min-width</code> &amp; <code>min-height</code>: default is auto, not 0</li>
+      <li><code>visibility: collapse;</code></li>
    </ol>
    <p>Ignored Properties</p>
    <ol>
@@ -456,6 +469,13 @@ flex-start | flex-end | center | baseline | <strong>stretch</strong></code></p>
 <figure><object data="flexfiles/align.html"></object></figure>
 <a href="flexfiles/align.html" target="play" class="objectlink">↪</a>
 </div>
+
+<div class="slide">
+<header><h1>Impact of <code>visibility: collapse</code></h1></header>
+<figure><object data="flexfiles/align.html"></object></figure>
+<a href="flexfiles/align.html" target="play" class="objectlink">↪</a>
+</div>
+
 
 <div class="slide">
   <header><h1><code>align-content</code> property</h1></header>
