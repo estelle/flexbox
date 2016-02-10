@@ -1,0 +1,27 @@
+
+head * {
+  display: none;
+}
+head {
+  display: block;
+}
+[contenteditable] {
+  -webkit-user-modify: read-write-plaintext-only;
+}
+#editme, #edittemplate {
+  color: white;
+  white-space: pre;
+  display: block;
+  margin: 20px;
+  font-family: monospace;
+  -webkit-user-modify: read-write-plaintext-only;
+   -moz-user-modify: read-write;
+    user-modify: read-write;
+}
+body {
+  margin: 20px;
+  line-height: 1.6;
+}
+p {
+  padding-right: 40px;
+}

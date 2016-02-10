@@ -7,7 +7,7 @@ head, style {display: block;}
 style:first-of-type {visibility:hidden;}
 style:last-of-type {padding: 20px; font-size: 1.5em; white-space: pre; font-family: monospace; background-color: rgba(255,255,255,0.5);}
 html {min-height:100%;}
-div {border: 3px solid #6d88b7; padding: 3px; line-height: 2rem; min-height: 2rem;}
+div {border: 3px solid #ddaa00; padding: 3px; line-height: 2rem; min-height: 2rem;}
 div div {border-color: #333;}
 div>div {border-style: dotted;}
 div:nth-of-type(2){border-style: dashed;}
@@ -20,11 +20,12 @@ div:nth-of-type(2){border-style: dashed;}
 body > div {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 
 }
 div >  div {
-  flex: 10%;
+  //flex: 10%;
+  //min-width: 0;
 }
 </style>
 <title>Flexbox</title>

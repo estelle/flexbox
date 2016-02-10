@@ -1,0 +1,545 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>CSS: Flexbox</title>
+     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+   <link rel="stylesheet" href="screen.css"/>
+
+  </head>
+  <body>
+
+  <div id="topinfo">
+
+  </div>
+
+  <div id="info">
+    <p>
+    <span class="key">&rarr;</span> and <span class="key">&rarr;</span> to change slides.
+    <span class="key">2</span> for comments. <a href="http://estelle.github.io/flexbox">estelle.github.io/flexbox</a>
+    </p>
+  </div>
+
+  <div id="presentation">
+
+   <div id="presentation-counter"></div>
+
+   <div id="slides">
+
+
+<div class="slide normal">
+    <header>
+    	<h1 style="font-size:200%;">CSS: Flexbox</h1>
+    </header>
+     <section class="content">
+     <p> ◈ Estelle Weyl</p>
+  <p> ◈ <a href="http://www.twitter.com/estellevw">@estellevw</a></p><p> ◈ <a href="http://www.standardista.com">www.standardista.com</a></p>
+     </section>
+    </div>
+
+
+<div class="slide object">
+<header><h1>Problem we're trying to solve</h1></header>
+<object data="flexfiles/float.html"></object>
+<a href="flexfiles/float.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+<div class="slide object">
+<header><h1>Flex Box</h1></header>
+<object data="flexfiles/textflex.html"></object>
+<a href="flexfiles/textflex.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+<!-- General Browser Support -->
+<div class="slide">
+  <header><h1>Browser support</h1></header>
+    <section class="content">
+      <div class="divider">
+           <p>V1: <code>display: box;</code></p>
+           <ul class="icons">
+               <li class="chrome ">Chrome</li>
+               <li class="firefox ">Firefox 2</li>
+               <li class="safari ">Safari 3+</li>
+               <li class="android ">Android</li>
+               <li class="blackberry">Blackberry v7+</li>
+               <li class="text">prefix for all</li>
+           </ul>
+      </div>
+      <div class="divider">
+           <p>V2: <code>display: flexbox;</code></p>
+           <ul class="icons">
+               <li class="ie  ">IE 10</li>
+               <li class="text">-ms- for IE 10</li>
+           </ul>
+      </div>
+      <div class="divider">
+           <p>Final: <code>display: flex;</code></p>
+           <ul class="icons">
+               <li class="chrome ">Chrome</li>
+               <li class="safari ">Safari 6+</li>
+               <li class="firefox ">Firefox</li>
+               <li class="opera ">Opera</li>
+               <li class="ie  new">IE 11</li>
+               <li class="android ">Android 4.4</li>
+               <li class="blackberry">Blackberry 10+</li>
+               <li class="text">Prefix for BB and Safari</li>
+           </ul>
+      </div>
+    </section>
+</div>
+
+
+
+
+<!-- The Original Box Model explained -->
+ <div class="slide">
+	<header><h1>Flexible Box Model: V1</h1></header>
+    <section class="content">
+    <p>Used to position horizontal and vertical stacks.</p>
+<pre contenteditable style="float: left; margin: 0 10px 0 0;">.box {
+  display: box;
+  box-orient:<select onChange="changeBoxOrient(event)">&nbsp;&nbsp; &nbsp; &nbsp; <option>horizontal</option> &nbsp; &nbsp; &nbsp; <option>vertical</option> &nbsp; &nbsp; </select>;
+}
+.box .one, .box .two {
+  box-flex: 1;
+}
+.box .three {
+  box-flex: 3;
+}</pre>
+
+
+
+          <div id="box-orient-example" class="example">
+            <div>
+              Box one
+            </div>
+            <div>
+              Box two
+            </div>
+            <div>
+              Box three
+            </div>
+          </div>
+<ul class="icons">
+     <li class="chrome ">Chrome</li>
+     <li class="firefox ">Firefox 2</li>
+     <li class="safari ">Safari 3+</li>
+     <li class="android ">Android</li>
+     <li class="blackberry">Blackberry v7+</li>
+     <li class="text">prefix for all</li>
+ </ul>
+          <script defer="">
+            function changeBoxOrient(event) {
+              var el = document.getElementById('box-orient-example');
+              el.style.webkitBoxOrient = event.target.value;
+              el.style.MozBoxOrient = event.target.value;
+            }
+          </script>
+
+    </section>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- The Original Box Model explained: Part 2 -->
+<div class="slide">
+	<header><h1>Flexible Box Model: V1</h1></header>
+    <section class="content">
+<pre contenteditable>.box {
+  display: <b>box</b>;
+  box-pack: <select onChange="changeBoxPack(event)"><option>center</option>
+    <option>start</option>
+    <option>end</option> </select>;
+  box-align: <select onChange="changeBoxAlign(event)"><option>center</option><option>start</option><option>end</option><option>stretch</option></select>;
+}</pre>
+
+            <div id="box-orient-example-2" class="example">
+              <textarea>change the dropdowns and resize this &lt;textarea&gt;</textarea>
+            </div>
+
+            <script defer="">
+              function changeBoxPack(event) {
+                var el = document.getElementById('box-orient-example-2');
+                el.style.webkitBoxPack = event.target.value;
+                el.style.MozBoxPack = event.target.value;
+              }
+              function changeBoxAlign(event) {
+                var el = document.getElementById('box-orient-example-2');
+                el.style.webkitBoxAlign = event.target.value;
+                el.style.MozBoxAlign = event.target.value;
+              }
+            </script>
+
+    </section>
+</div>
+
+
+
+
+
+<!-- The Original Box Model explained: Part 3 -->
+<div class="slide">
+	<header><h1>Flexible Box Model: V1</h1></header>
+    <section class="content">
+<pre contenteditable class="new">display: box ;</pre>
+
+<pre contenteditable><b>box-orient:</b>  <strong>horizontal</strong> | vertical | inherit;
+
+<b>box-pack:</b> <strong>start</strong> | end | center | justify;
+
+<b>box-align:</b> start | end | center | baseline | <strong>stretch</strong>;
+
+<b>box-flex:</b> integer | <strong>0</strong>;
+
+<span style="opacity: 0.4"><b>box-flex-group</b>
+
+<b>box-ordinal-group</b>
+
+<b>box-direction</b>: normal | reverse | inherit;
+
+<b>box-lines</b>:</span>
+</pre>
+<ul style="clear:both;"><li><a href="http://www.html5rocks.com/en/tutorials/flexbox/quick/">Quick tutorial</a></li><li><a href="http://msdn.microsoft.com/en-us/ie/hh272902#_CSSFlexBox">IE 10 Support</a></li></ul>
+    </section>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- -ms- version of  Box Model -->
+<div class="slide">
+	<header><h1>Flexible Box Model: V2</h1></header>
+    <section class="content">
+<pre contenteditable class="new">display: flexbox | inline-flexbox;</pre>
+
+<pre contenteditable><b>flex-direction</b>: lr | rl | tb | bt | <strong>inline</strong> |
+    inline-reverse | block | block-reverse</span>
+
+<b>flex-order:</b> integer | <strong>1</strong>;</span>
+
+<b>flex-pack:</b> <strong>start</strong> | end | center | justify;
+
+<b>flex-align:</b> <strong>auto</strong> | baseline;
+</pre>
+<ul class="icons" style="float:left">
+         <li class="chrome">Chrome 15</li>
+         <li class="safari bad">Safari 5.1</li>
+         <li class="firefox bad">Firefox 7</li>
+         <li class="opera bad">Opera 12</li>
+         <li class="ie">IE 10</li>
+     </ul>
+     <p style="float:left"><a href="http://www.w3.org/TR/css3-flexbox/">W3C specs</a></p>
+     <p style="clear: both;" class="notes">The spec syntax changed drastically. Browsers are curently changing..</p>
+    </section>
+</div>
+
+
+
+<div class="slide intro">
+  <header><h1>Actual Flex Box</h1></header>
+    <section class="content">
+      <p>CSS Flexible Box Layout Module</p>
+      <a href="http://www.w3.org/TR/css3-flexbox/">www.w3.org/TR/css3-flexbox/</a>
+    </section>
+</div>
+
+
+
+
+<div class="slide">
+  <header><h1>Flexible Box Model: Final</h1></header>
+    <section class="content">
+       <p>Related properties:</p>
+        <dl class="deprecated listed">
+
+          <dt> display</dt>
+          <dd>Values include <code>flex</code> and <code>inline-flex</code>. Used on parent to create the flex container.</dd>
+
+          <dt> align-content</dt>
+
+          <dt> align-items</dt>
+
+          <dt> align-self</dt>
+
+          <dt> flex</dt>
+          <dd> Shorthand for <code>[flex-basis  flex-grow, and flex-shrink</code>, or <code>none</code><dd>
+
+          <dt> flex-basis</dt>
+          <dd> default = auto</dd>
+
+          <dt> flex-direction</dt>
+          <dd> Set the containers axis for its children with <code>row</code>, <code>row-reverse</code>, <code>column</code> or <code>columns-reverse</code> on the parent</dd>
+
+          <dt> flex-flow</dt>
+          <dd>Shorthand for <code>flex-direction</code> and <code>flex-wrap</code> properties.</dd>
+
+          <dt> flex-grow</dt>
+          <dd>Positive number determines how much flex item will grow relative to  other flex items in flex container when positive free space is distributed. default is 1 for container.  0 for children. Positive only</dd>
+
+          <dt> flex-shrink</dt>
+          <dd>Positive number determines how much flex item will shrink relative to  other flex items in flex container when negative free space is distributed. default is 1</dd>
+
+          <dt> flex-wrap</dt>
+          <dd> To determine whether the boxes are single line or wrap, and the direction, use <code>nowrap</code>, <code>wrap</code> or <code>wrap-reverse</code></dd>
+
+          <dt> justify-content</dt>
+
+          <dt> min-height</dt>
+
+          <dt> min-width</dt>
+
+          <dt>order</dt>
+          <dd>Integer. Controls order of flex item within flex container</dd>
+        </dl>
+    </section>
+</div>
+
+<div class="slide">
+  <header><h1>Steps</h1></header>
+    <section class="content">
+<ol>
+  <li>Add <code>display: flex;</code> to the parent of the elements to be flexed.</li>
+  <li>Set <code>flex-direction</code> to horizontal or vertical</li>
+  <li>Set <code>flex-wrap</code> to control wrap direction</li>
+<ol>
+    </section>
+</div>
+
+
+<div class="slide">
+  <header><h1><code>display</code> property</h1></header>
+    <section class="content">
+      <p><code>
+          inline | block | list-item | inline-list-item | inline-block | table | inline-table | table-cell | table-caption | <strong>flex | inline-flex</strong> | grid | inline-grid</code>
+        </li>
+      </ul>
+
+      <pre><strong>display: flex;</strong></pre>
+      <p>block-level flex container box</p>
+      <pre><strong>display: inline-flex;</strong></pre>
+      <p>inline-level flex container box</p>
+
+    </section>
+</div>
+
+
+<div class="slide object">
+  <object data="http://codepen.io/estelle/pen/KCzfH/"></object>
+  <a href="http://codepen.io/estelle/pen/KCzfH/" class="objectlink" target="_new">Visit Site</a>
+ </div>
+
+
+<div class="slide object">
+<header><h1><code>display</code> property</h1></header>
+<object data="flexfiles/display.html"></object>
+<a href="flexfiles/display.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+<div class="slide">
+  <header><h1><code>flex-direction</code> property</h1></header>
+    <section class="content">
+      <p><code><strong>row</strong> | row-reverse | column | column-reverse</code></p>
+    </section>
+</div>
+
+
+<div class="slide object">
+<header><h1><code>flex-driection: ... </code></h1></header>
+<object data="flexfiles/direction.html"></object>
+<a href="flexfiles/direction.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+
+<div class="slide">
+  <header><h1><code>flex-wrap</code> property</h1></header>
+    <section class="content">
+      <p><code><strong>nowrap</strong> | wrap | wrap-reverse</code></p>
+      <p>Purpose: is the whole shebang on one line, or can it wrap if necessary</p>
+    </section>
+</div>
+
+<div class="slide object">
+<header><h1><code>flex-wrap: ...</code></h1></header>
+<object data="flexfiles/flexwrap.html"></object>
+<a href="flexfiles/flexwrap.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+
+
+<div class="slide">
+  <header><h1><code>flex-flow</code> property</h1></header>
+    <section class="content">
+      <p>Shorthand for <code>flex-direction</code> and <code>flex-wrap</code>
+    </section>
+</div>
+
+
+<div class="slide object">
+<header><h1><code>flex-flow: ...</code></h1></header>
+<object data="flexfiles/flexflow.html"></object>
+<a href="flexfiles/flexflow.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+
+
+<div class="slide intro">
+  <header><h1>"But wait, there's more!"</h1>
+    <h2>--Ed Valenti</h2></header>
+    <section class="content">
+    </section>
+</div>
+
+
+<div class="slide">
+  <header><h1><code>order</code> property</h1></header>
+    <section class="content">
+      <pre>div:nth-of-type(3n) {
+   order: -1;
+}</pre>
+<p>The default value is 0. Anything lower will come before those without set values. Anything above will come after.</p>
+    </section>
+</div>
+
+
+<div class="slide object">
+<header><h1><code>order: ...</code></h1></header>
+<object data="flexfiles/order.html"></object>
+<a href="flexfiles/order.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+<div class="slide">
+  <header><h1><code>flex</code> shorthand</h1></header>
+    <section class="content def">
+      <p><code>flex-grow</code>:
+How to divide the extra space. default: 1.</p>
+
+<p><code>flex-shrink</code>:
+How to shrink if there's not enough room. default: 1. </p>
+
+<p><code>flex-basis</code>:
+the
+starting size
+before free
+space is
+distributed. length value or <code>auto</code> . If set to <code>auto</code>, sets to flex item’s main size property. </p>
+    </section>
+</div>
+
+<div class="slide object">
+<header><h1><code>flex</code> shorthand property</h1></header>
+<object data="flexfiles/flex.html"></object>
+<a href="flexfiles/flex.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+<div class="slide object">
+<header><h1><code>flex</code> gotcha!</h1></header>
+<object data="flexfiles/flex3.html"></object>
+<a href="flexfiles/flex3.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+<div class="slide">
+  <header><h1><code>justify-content</code> property</h1></header>
+    <section class="content">
+      <p><code><strong>flex-start</strong> | flex-end | center | space-between | space-around</code></p>
+      <p>aligns flex items</p>
+    </section>
+</div>
+
+
+<div class="slide object">
+<header><h1><code>justify-content</code> property</h1></header>
+<object data="flexfiles/justify.html"></object>
+<a href="flexfiles/justify.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+<div class="slide">
+  <header><h1><code>align-items, align-content</code> properties</h1></header>
+    <section class="content">
+      <p><code>
+flex-start | flex-end | center | baseline | <strong>stretch</strong></code></p>
+    </section>
+</div>
+
+
+
+
+<div class="slide object">
+<header><h1><code>align-items</code> property</h1></header>
+<object data="flexfiles/align.html"></object>
+<a href="flexfiles/align.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+
+
+
+
+
+
+<div class="slide">
+  <header><h1>Remember This?</h1></header>
+    <section class="content" id="selectors">
+<ul>
+  <li>1</li>
+</ul>
+<ul>
+  <li>1</li>
+  <li>2</li>
+</ul>
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+</ul>
+
+<pre>ul {
+  display: flex;
+}
+li {
+  flex: 1;
+}</pre>
+    </section>
+</div>
+
+
+<div class="slide object">
+<header><h1>Flex Box</h1></header>
+<object data="flexfiles/finalflex.html"></object>
+<a href="flexfiles/finalflex.html" target="play" class="objectlink">Open in separate window</a>
+</div>
+
+
+
+
+
+  </div>
+  <script src="slides.js"></script>
+  </body>
+</html>

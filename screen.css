@@ -12,11 +12,11 @@ body,
   top: 0px;
   background-color: #ccf;
  background-image:
-    linear-gradient(#b8c6df,#6d88b7);
+    linear-gradient(#b8c6df,#ddaa00);
   background-image:
     linear-gradient(to bottom,
                     #b8c6df 0%,
-                    #6d88b7 100%);
+                    #ddaa00 100%);
 
 
 }
@@ -203,7 +203,7 @@ object + a {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #6d88b7;
+  background-color: #ddaa00;
   color: white;
   padding: 5px 20px;
   border-radius: 0 0 0 40px;
@@ -232,7 +232,7 @@ dt:hover + dd {
   display:inherit;
 }
 .def p code,
-dd code {color: #6d88b7; font-weight: bold}
+dd code {color: #ddaa00; font-weight: bold}
 
 /* Box Oreient */
 div.example {

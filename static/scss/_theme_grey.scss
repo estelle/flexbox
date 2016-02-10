@@ -1,0 +1,25 @@
+:root {font-size: 162.5%;}
+body {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif, 'Droid Sans';
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  left: 0px; top: 0px;
+  background: #333333;
+  color: #ddd;
+}
+.slide {
+  //padding: 10px 20px;
+  //box-sizing: border-box;
+}
+dt {
+  background-color: #444;
+}
+.title h1,
+.intro header h1 {
+  color: #da0;
+}
+.slide:after {
+  color: #d0a;
+}
