@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Flex Items: flex-wrap</title>  <style>
+  head {display: block;}
+  head * {display: none;}    body {padding: 100px;}
+    article {width: 500px;}
+
+    article:nth-of-type(n+8) {
+      height: 500px;
+    }
+    article:nth-of-type(n+8) span{
+      max-width: 5em;
+    }
+    section { background-color: rgba(255,255,255,0.6);}
+span {background-color: rgba(0,0,0,0.1); font-family: monospace;}span {
+  border: 1px solid;
+  margin: 10px;
+  padding: 0.5em 1em;
+
+body {
+  font-size: 16px;
+  text-align: center;
+}
+p {margin-top: 0;}
+}section {
+  display: flex;
+  border: 1px dashed;
+  padding: 10px;
+}
+  </style>
+    <style style="display: block; padding: 10px; white-space: pre; font-size: 16px; font-family: monospace; background-color: rgba(255,255,255,0.6);" contenteditable>section {
+      flex-flow: row nowrap
+    }
+</style>
+</head>
+<body>
+<article>
+<section>
+  <span>A</span>
+  <span>BB</span>
+  <span>CCC</span>
+  <span>DD<br>DD</span>
+  <span>EEE<br>EE</span>
+  <span>FFF<br>FFF</span>
+  <span>GGG<br>GGG<br>G</span>
+  <span>HH<br>HH<br>HH<br>HH</span>
+  <span>III<br>III<br>III</span>
+  <span>JJJJJ<br>JJJJJ</span>
+</section>
+</article>
+
+</body>
+</html>
