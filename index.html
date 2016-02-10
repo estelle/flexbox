@@ -83,6 +83,13 @@ function changeMagic3(e){
 </script>
 
 <div class="slide">
+<header><h1>Fixed Header and Footer </h1></header>
+<figure><object data="flexfiles/fixedfooter.html"></object></figure>
+<a href="flexfiles/fixedfooter.html" target="play" class="objectlink">↪</a>
+</div>
+
+
+<div class="slide">
 <header><h1>Flex Box</h1></header>
 <figure><object data="flexfiles/button.html"></object></figure>
 <a href="flexfiles/button.html" target="play" class="objectlink">↪</a>
@@ -310,6 +317,30 @@ function loadCIU(e){
 <a href="flexfiles/button.html" target="play" class="objectlink">↪</a>
 </div>
 
+<div class="slide">
+   <section class="content">
+   <p>Flex items
+   <ol>
+      <li>All non-absolutely positioned child nodes</li>
+      <li>Generated Content</li>
+      <li>anonymous flex items => non-empty text nodes</li>
+   </ol>
+   <p>Not flex items
+   <ol>
+   <li>::first-line &amp; ::first-letter</li>
+   <li>absolutely/fixed positioned elements</li>
+   <li>white space</li>
+   </ol>
+   <p>Ignored Properties</p>
+   <ol>
+   <li>column-* properties</li>
+   <li>float</li>
+   <li>clear</li>
+   <li>vertical-align   </li>
+   </ol>
+   </section>
+</div>
+
 
 <div class="slide">
   <header><h1><code>flex-direction</code> property</h1></header>
@@ -452,8 +483,20 @@ flex-start | flex-end | center | space-between | space-around | <strong>stretch<
     </section>
 </div>
 
+<div class="slide">
+  <header><h1><code>align-self</code> property</h1></header>
+    <section class="content">
+      <p><code>
+<strong>auto</strong> | flex-start | flex-end | center | baseline | stretch</code></p>
+<p>Override the <code>align-items</code> on a per flex item basis</p>
+    </section>
+</div>
 
-
+<div class="slide">
+<header><h1><code>align-self</code> property</h1></header>
+<figure><object data="flexfiles/alignself.html"></object></figure>
+<a href="flexfiles/alignself.html" target="play" class="objectlink">↪</a>
+</div>
 
 <div class="slide">
   <header><h1><code>order</code> property</h1></header>
@@ -516,6 +559,23 @@ distributed. length value, content or <code>auto</code> . If set to <code>auto</
 <a href="flexfiles/flex3.html" target="play" class="objectlink">↪</a>
 </div>
 
+<div class="slide">
+<header><h1><code>flex-basis</code> </h1></header>
+<div style="text-align: center;"><img style="margin-top: 100px;" src="static/img/flexbasis.png" alt="explanation of the difference between auto and 0 for flex basis"></div>
+</div>
+
+<div class="slide">
+<header><h1><code>flex-basis</code> </h1></header>
+<figure><object data="flexfiles/basis.html"></object></figure>
+<a href="flexfiles/basis.html" target="play" class="objectlink">↪</a>
+</div>
+
+
+<div class="slide">
+<header><h1>Flex Box</h1></header>
+<figure><object data="flexfiles/magiclayout.html"></object></figure>
+<a href="flexfiles/magiclayout.html" target="play" class="objectlink">↪</a>
+</div>
 
 
 <div class="slide">
