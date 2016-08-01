@@ -1,8 +1,8 @@
-With the flex container and flex item properties explained, it's time to practice our new skills by implementing responsive flex layouts.
+With the flex container and flex item properties explained, it's time to practice our new skills by implementing a few flex solutions.
 
 ## Responsive 2-column layout
 
-We covered a typical layout in the [flex items chapter](link to example). Let's take a look at a similar example, but with the navigation between the header and main content on wide screens, with a dropping navigation on mobile:
+We covered a typical layout in the [flex items chapter](link to example). Let's take a look at a similar example. In this scenario we will have the navigation appear between the header and main content on wide screens, with the navigation below the content in both the markup and on narrow screens:
 
     <body>
       <header>
@@ -27,7 +27,7 @@ We covered a typical layout in the [flex items chapter](link to example). Let's 
       </footer>
     </body>
 
-We can layout the site for smaller devices, then alter the appearance for larger screens. In just a few lines of CSS, we can make the site completely responsive.
+We lay the site out for smaller devices, then alter the appearance for larger screens. In just a few lines of CSS, we can make this layout completely responsive.
 
     html {
       background-color: #deded8;
@@ -98,14 +98,14 @@ We can layout the site for smaller devices, then alter the appearance for larger
 
 ![Slightly different layouts based on device width](images/excample_01_3views.gif)
 
-By default, sectioning elements are displayed block, taking up 100% of the width, so there is no reason to declare originally: 
+By default, sectioning elements are displayed block, taking up 100% of the width, so there is no reason to declare the following if we are following source order appearance: 
 
     body {
       display: flex;
       flex-direction: column;
     }
 
-Though we could have, and the design would have looked the same. We include it in the wider version so we can reorder the navigation. The `nav` in the source code comes after the `main` content, which is what we want for narrow viewports, screen readers and our search engine friends. Visually, in wider browsers, we'll reorder it, which we'll cover in a bit. For the narrow viewport, we only need to focus on the navigation:
+Though we could have, and the design would have looked the same. We include it in the wider version so we can reorder the navigation. The `nav` in the source code comes after the `main` content, which is what we want for narrow viewports, screen readers and our search engine friends. Visually, in wider browsers, we'll reorder it, which we'll cover in a bit. For the narrow viewport, we only need to focus on the layout of the navigation:
 
     nav {
       display: flex;
@@ -114,7 +114,7 @@ Though we could have, and the design would have looked the same. We include it i
       flex: auto;
     }
 
-For the narrow viewport, all we really need flexbox for is to ensure the five links in the navigation are all on one line, with the widths being relative to the width of the content. Had we used:
+The five links of the navigation, based on how we marked it up, appear by default on one line, but with no layout styling, with the widths based on the width of the text content.  With flex display: flex on the nav and flex: auto on the links themselves, the flex items grow to take up 100% of the width. Had we used:
 
     nav {
       display: block;
