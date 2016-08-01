@@ -96,7 +96,7 @@ We lay the site out for smaller devices, then alter the appearance for larger sc
       }
     }
 
-![Slightly different layouts based on device width](images/excample_01_3views.gif)
+![Slightly different layouts based on device width](img/4/excample_01_3views.gif)
 
 By default, sectioning elements are displayed block, taking up 100% of the width, so there is no reason to declare the following if we are following source order appearance: 
 
