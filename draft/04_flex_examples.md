@@ -278,23 +278,19 @@ Note that the keyboard user, navigating thru the page, will tab thru the main co
 
 Because we turned the &lt;body> into a flex container to enable the appearance of a reordering, we had to declare `flex-direction: column;` to maintain the look and feel.  
 
-XXXX
+On the home page, we want the three `section`s of the `main` area to appear side-by-side, stretched to all be equal height.  We set `display: flex;` on `&lt;main>` globally. Similar to `&lt;body>`, there should only be one `&lt;main>` per page. If we're using a site-wide style sheet, this declaration should still be okay: but if we don't have multi-column layout for the inner pages, we should change the first selector list to read `body, .home main, section`. 
 
-On the home page, we want the three sections of the main area to appear side-by-side, stretched to all be equal height.  We set `display: flex;` on &lt;main> globally. Similar to &lt;body>, there should only be one main section per page. If we're using a site-wide style sheet, this declaration should still be okay: but if we don't have multi-column layout for the inner pages, we should change the first selector to `body, .home main, section`. 
-
-We didn't declare `flex-direction: row;` as that is the default, so isn't necessary. 
-
-We could have declared `align-items: stretch`, but there was no need to. If you remember from the [align-items property](link to the align-items property), by default flex items stretch to be height of the flex line. This is what we want: we want the sections to be the same height, no matter their content.
+We didn't declare `flex-direction: row;` as that is the default, so isn't necessary. Similarly, we could have declared `align-items: stretch`, but there was no need to as it's also the default. If you remember from the [align-items property](link to the align-items property), by default flex items stretch to be height of the flex line. This is what we want: we want the sections to be the same height, no matter their content.
 
 ![Develop mobile first. And wide-screen features later](img/4/power-grid-home-nobasis.png)
 
-With a simple declaration - `display: flex;` - we are 95% of the way to creating our layout as seen in figure ?, but we can perfect our layout a bit. Making the sections all the same width and aligning the buttons on the bottom of the sections would look better.
+We are 95% of the way to creating our layout as seen in figure ? with a simple declaration of `display: flex;`, but we can perfect our layout a bit. Making the sections all the same width and aligning the buttons on the bottom of the sections would look better.
 
 #### sections
 
-By default, the three sections will stretch to be as tall as the flex line. That's good. Their flex basis which helps determine the width, is based on the content. In our sections, the width of the paragraph is the basis. As figure ? shows, the proportions of the sections are based on those paragraphs. That's not what we want. 
+By default, the three sections will stretch to be as tall as the flex line. That's good. Their flex basis which helps determine the width, is based on the content which in this case is the width of the paragraph. As figure ? shows, that's not what we want. 
 
-To set the width of those sections to be equal, or proportional such as 2:2:3 or 3:3:5, we set the basis to 0, and set growth values reflective of the proportions you want.
+To set the width of those sections to be proportional such as 1:1:1, 2:2:3 or 3:3:5, we set the basis to 0, and set growth values reflective of those proportions.
 
 We want them to be of equal widths, so we give them all the same basis and growth factor (the two declarations are equal):
 
@@ -312,9 +308,9 @@ Had we wanted the proportions to be 2:2:3, we could have written:
           flex: 3;
         }
 
-Remember, the [flex property, including the basis](link to basis), is set on the flex items, not the container.
+Remember, the [`flex` property, including the basis](link to basis), is set on the flex items, not the container.
 
-In our home page example, the sections are both flex items and flex containers. We turned them into flex containers with a direction of column to enable forcing the buttons to the bottom. Our sections' paragraphs are of differing heights, so the buttons aren't by default aligned at the bottom. By giving the paragraphs within the home sections a growth factor, they grow to take up all the distributable space, pushing the button down to the bottom of the section:
+In our home page example, the `section`s are both flex items and flex containers. We turned them into flex containers with a direction of column to enable forcing the buttons to the bottom. Our sections' paragraphs are of differing heights, so the buttons aren't by default aligned at the bottom. By only allowing the paragraphs to grow by giving them, but not the image or button a growth factor, they grow to take up all the distributable space, pushing the button down to the bottom of the section:
 
     main > section > p {
       flex: 1;
@@ -352,12 +348,12 @@ Now the buttons are always flush to the bottom. Now our layout is done, as shown
 	
 ## Sticky footer
 
-In chapter ?, we showed a simple mobile example in which the footer would always be glued to the bottom of the page no matter the height of the device. Chapter ? provided a more complex example visually, but equally easy to code, in which no matter how tall the browser got, and no matter how little content the main content had, the footer would always be glued to the bottom of the browser. These are called sticky footers.
+In chapter ?, we showed a simple mobile example in which the footer would always be glued to the bottom of the page no matter the height of the device. Chapter ? provided a visually more complex example that is equally easy to code: no matter how tall the browser got, and no matter how little content the main content had, the footer would always be glued to the bottom of the browser. These are called sticky footers.
 
 ![Figure 1c. Sticky header and footer on mobile using Flexbox instead of position fixed](img/1/01_stickyfooter.png)[::LINK::](http://localhost/flexfiles/fixedfooter.html)
 ![Complex page with a sticky footer](images/gold_2.tiff)
 
-Prior to flexbox being supported, we were able to create sticky footers, but it required hacks, including knowing the height of the footer. Flexbox enables creating sticky footers and content based sticky footers. In our first example, the footer always sticks to the bottom of the viewport. In our second example the footer will stick to the bottom if the page would otherwise be shorter than the viewport, but moves down off screen, sticking to the bottom of the page, not the viewport, is enough content.
+Prior to flexbox being supported, we were able to create sticky footers, but it required hacks, including knowing the height of the footer. Flexbox makes creating sticky footers easy! In our first example, the footer always sticks to the bottom of the viewport. In our second example the footer will stick to the bottom of the viewport if the page would otherwise be shorter than the viewport, but moves down off screen, sticking to the bottom of the page, not the viewport, if the content is taller than the viewport.
 
 Both examples contain the same shell:
 
@@ -374,11 +370,11 @@ We turn the body into a flex container with a `column` direction.
 		flex-direction: column;
 	}
 
-We also direct the &lt;main> to take all the available space. 
+We also direct the &lt;main> to take all the available space: it is the only flex item with a non-null growth factor. 
 
 The key difference is whether the height of the body is 100vh or at minimum 100vh, and whether the &lt;main> is allowed to shrink.
 
-In our first example, in figure ?, we want the sticky footer to always be present. If there is too much content in the main area, it should shrink to fit. If there isn't enough text to fill the screen, it should grow. Our footer must always be visible. 
+In our first example, in figure ?, we want the sticky footer to always be present. If there is too much content in the main area, it should shrink to fit. If there isn't enough text to fill the screen, it should grow, making our footer always visible. 
 
 	body {
     display: flex;
@@ -393,9 +389,9 @@ In our first example, in figure ?, we want the sticky footer to always be presen
     overflow: scroll;
 	}
 
-We set the height to always be exactly the height of the viewport with `height: 100vh`. We dictate that the header and footer can neither grow nor shrink, but rather must always be the height of the content. The &lt;main> can both grow and shrink, absorbing all the distributable space, if any, scrolling if too tall.
+We set the height to always be exactly the height of the viewport with `height: 100vh`. We dictate that the `header` and `footer` can neither grow nor shrink, but rather must always be the height of the content. The `&lt;main>` can both grow and shrink, absorbing all the distributable space, if any, scrolling if too tall.
 
-In our second example, if we are OK with the footer being out of view, below the page fold, we set the the minimum width is 100vh, and dictate the &lt;main> can grow, but is not required to shrink. 
+In our second example, if we are OK with the footer being out of view, below the page fold, we set the the minimum height is 100vh, and dictate the &lt;main> can grow, but is not required to shrink. 
 
 	body {
     display: flex;
@@ -429,11 +425,13 @@ We did set `flex: 0 0 50%;` on the flex item child, otherwise its main-dimension
 
 ## Inline Flex Example
 
-In chapter ? we demonstrated an example of what not to do in terms of user experience, but a common feature none the less.
+In [chapter ?](link to button example), we demonstrated an example of what not to do in terms of user experience, but a common feature none the less.
 
 ![Figure 1d. Button with many components neatly vertically centered](img/1/01_inline_flex_agree_button.png)[::LINK::](http://localhost/flexfiles/button.html)
 
-You never want to include a checkbox, or any form control, within a link or button. While you should encourage the firing of any designer who creates such a button, you still may need to code it. (Though, when I was asked to create such a thing and refused, I was asked "Are you incompetent? Do I need to code it for you?", to which I responded, "Sure. Go for it.")
+You never want to include a checkbox, or any form control, within a link or button. While you should encourage the firing of any designer who creates such a button, you still may need to code it. (When I was asked to create such a thing and refused, I was asked "Are you incompetent? Do I need to code it for you?" Being me, I responded, "Sure. Go for it.")
+
+The code is semantic, even though the appearance is bad UX:
 
 	<label>
 		<input type="checkbox" name="agree" value="yes">
@@ -441,7 +439,7 @@ You never want to include a checkbox, or any form control, within a link or butt
 		<small>Check yes to sign away your life...</small>
 	</label>
 
-The above is an implicit label: there is no `for` attribute, as the form control is associated with the label by being inside the label.
+The above is an "implicit label": there is no `for` attribute, as the form control is associated with the label by being inside it.
 
 	label {
 		display: inline-flex;
@@ -452,7 +450,9 @@ The above is an implicit label: there is no `for` attribute, as the form control
 		flex: 0 0 auto;
 	}
 
-We turn the label into an inline flex container and set the flex items to be vertically centered within that container. By default, the width of the inline flex container is the width of the content. We therefore specifically declare how wide we want the &lt;small> to be, and then set it to not grow or shrink, but be exactly the size of the `width` property by declaring `flex: 0 0 auto;`
+We turn the label into an inline-flex container and set the flex items to be vertically centered within that container. By default, the width of the inline flex container is the width of the content. We therefore specifically declare how wide we want the `&lt;small>` to be, and then set it to not grow or shrink, but be exactly the size of the `width` property by declaring `flex: 0 0 auto;`.
+
+Now that you know how that is done, don't do it.
 
 ## Calendar
 
@@ -460,7 +460,7 @@ For a little bit of fun, let's create a calendar with flexbox and CSS counters, 
 
 ![Calendar created with flexbox](img/4/05_calendar.png)
 
-With clean, semantic HTML we create an accessible calendar. The class is the day of the week for the first day of the month:
+With clean, semantic HTML we create an accessible calendar. The class is the day of the week that is the first day of the month:
 
 	<article class="calendar thursday">
 	<h1>December 2016</h1>
@@ -499,7 +499,7 @@ With a little flex box magic, we turn this heading, unordered list and ordered l
 		flex-wrap: wrap;
 	}
 	
-The shell &lt;article> is turned to into a flex container that is 75% of the width of the parent. We also reset our counter every time we encounter a new calendar. The &lt;ol> and &lt;ul> are both flex items and flex containers. Only the &lt;ol> is allowed to wrap onto multiple lines.
+The shell `&lt;article>`, with a class of `.calendar`, is turned into into a flex container 75% of the width of the parent. We also reset our counter every time we encounter a new calendar. The `&lt;ol>` of dates and `&lt;ul>` of days are both flex items and flex containers. Only the ordered list of dates is allowed to wrap onto multiple lines.
 
 	.calendar ol:before {
 		content: '';
@@ -526,9 +526,9 @@ The shell &lt;article> is turned to into a flex container that is 75% of the wid
 		flex: 0 0 85.5%;
 	}
 	
-With both the &lt;ol> and &lt;ul> being flex containers, every &li> is a flex item. There are 7 days in a week, so we set each day and date to be 14.25%, or one seventh, of the width of the parent. We do want the first day of the month to fall in the correct location, so we add a generated content flex item to preceded the &lt;ol> of dates. 
+With both the `&lt;ol>` and `&lt;ul>` being flex containers, every `&li>` is a flex item. There are 7 days in a week, so we set each day and date to be 14.25%, or one seventh, of the width of the parent. We do want the first day of the month to fall in the correct location, so we add a generated content flex item to preceded the `&lt;ol>` of dates. 
 
-If you recall from [chapter ?](link to # Flex Container), the children of flex containers are flex items, including generated content. The width of this pre-date box depends on the class of the calendar and is set by the flex basis of that `ol:before` declaration. This is what we used to make sure the first day of the month falls under the right day of the week. Sunday is not necessary, as the flex-basis will default to auto, and with no content and no width set on the `generated` content, the basis will be 0px.
+If you recall from [chapter ?](link to # Flex Container), the children of flex containers are flex items, including generated content. The width of this pre-date box depends on the class of the calendar and is set by the flex basis of that `ol:before` declaration. This is what we used to make sure the first day of the month falls under the right day of the week. Declared a Sunday class is not necessary, as the flex-basis will default to `auto`, and with no content and no width set on the `generated` content, the basis will be `0px`.
 
 	.calendar li {
 		flex: 0 0 14.25%;
@@ -550,14 +550,14 @@ We set all the flex items, other than the generated content spacer, to have a fl
 
 ![The `overflow: hidden` prevents the text from overflowing it's flex item container. `text-overflow: ellipsis`, while not covered in this chapter, helps us make that text clipping look good.](img/4/05_calendar_2.png)[:LINK:](http://127.0.0.1:8887/flexfiles/46_calendar.html)
 
-We make the days a little darker than the dates, and enable the text to shrink with ellipses if the text would otherwise overflow the flex item as the page narrows, as shown in figure ?. We set `overflow: hidden` to prevent the text from overflowing the flex item. This clips the text, hiding anything that would overflow off to the right (since this example is left-to-right). The `text-overflow: ellipsis` declaration, while not covered in this chapter, helps us make that text clipping look good. 
+We make the days a little darker than the dates, and enable the text to shrink with ellipses if the text would otherwise overflow the flex item as the page narrows, as shown in figure ?. We set `overflow: hidden` to prevent the text from overflowing the flex item. This clips the text, hiding anything that would overflow on the right (since this example is left-to-right). The `text-overflow: ellipsis` declaration, while not covered in this chapter, helps us make that text clipping look good. 
 
 	.calendar ol li:before {
 		counter-increment: calendar;
 		content: counter(calendar);
 	}
 
-Finally, we add the date to the dates. Earlier we removed the &lt;ol> counter with `list-style-type: none;` set on both the &lt;ol> and &lt;ul>. We add the date back to each list item with generated content. The `counter-increment: calendar;` declaration increments the counter we called `calendar`. Instead of adding an empty `content: ''` which is commonly used for styling, and is used in our day spacer on the first flex line, we set `content: counter(calendar);`, which provides the current value of the counter as the content of the generated content. 
+Finally, we add the date to the dates. Earlier we removed the `&lt;ol>` counter with `list-style-type: none;` set on both the `&lt;ol>` and `&lt;ul>`. We add the date back to each list item with generated content. The `counter-increment: calendar;` declaration increments the counter we called `calendar`. Instead of adding an empty `content: ''` which is commonly used for styling, and is used in our day spacer on the first flex line, we set `content: counter(calendar);`, which provides the current value of the counter as the content of the generated content. 
 
 	.calendar ol li {
 		text-align: right;
@@ -572,7 +572,7 @@ One of the more difficult layouts to create with flexbox is a responsive grid of
 
 While I've been waiting for grids to be fully supported, I've been using a clever little hack to create magic grid layouts.
 
-The magic grid layout is a responsive layout in which any number of module flex items, with a minimum and maximum allowed width, can fully fill the available space, wrapping on as many flex lines as needed, with each line of modules, including the last line of modules lining up perfectly with the line of flex items preceding them. Normally, if the last line of flex items does not contain the same number of flex items as preceding lines, the last line of flex items will grow the the maximum allowable width, not necessarily lining up with the flex items in other flex lines. The magic grid, as shown in figure ?.
+The magic grid layout is a responsive layout in which any number of module flex items, with a minimum and maximum allowed width, can fully fill the available space, wrapping on as many flex lines as needed, with each line of modules, including the last line of modules lining up perfectly with the line of flex items preceding it. Normally, if the last line of flex items does not contain the same number of flex items as preceding lines, the last line of flex items will grow the the maximum allowable width, not necessarily lining up with the flex items in other flex lines. The magic grid, is shown in figure ?.
 
 ![11 flex items on a wide screen, ](img/4/07_magic_5.png)
 ![medium screen](img/4/07_magic_4.png)
@@ -580,7 +580,7 @@ The magic grid layout is a responsive layout in which any number of module flex 
 
 With a few lines of CSS, you can create a layout in which your flex items are lain out in a neat grid, even if you have a prime number of items, as shown in the three examples in figure ?.
 
-The code is several articles nested within a main. Each articles has an image with a width of 100% and a paragraph, but as long as none of the articles contain non-wrappable or shrinkable content, the content has no bearing on the magic grid layout.
+The code is several `article`s nested within a `main`. Each article has an image with a width of 100% and a paragraph, but as long as none of the articles contain non-wrappable or shrinkable content, the content has no bearing on the magic grid layout.
 
 	main {
 		display: flex;
@@ -592,7 +592,7 @@ The code is several articles nested within a main. Each articles has an image wi
 		min-width: 200px;
 	}
 	
-We turn the &lt;main> parent into a flex container, with flex items that can wrap over as many lines as need be.
+We turn the `&lt;main>` parent into a flex container, with the flex items able to wrap over as many lines as need be.
 
 We set the flex basis on ALL the flex items to the same number: the convention is one. This is the same as setting `flex: 1 0 0%;`. While the basis may be 0, the minimum width a flex item can grow to is 200px, and they can't grow to wider than 300px. This is a good way of developing responsive content. 
 
@@ -602,7 +602,7 @@ The problem is, with only these values (and a few other values like border and p
 
 If you look at the last flex line in figure ?, you'll note the flex items are not nicely lined up with the flex items in the preceding flex lines. That's because the flex items with a positive growth factor will grow as much as allowed. In our case they are 300px wide, the value of the `max-width` property. 
 
-To force the two flex items on the last flex line to be the same width as all the other flex items so they line up nicely, there's a little hack. The trick is to add a few invisible flex items, with 0px default cross dimension.
+To force the two flex items on the last flex line to be the same width as all the other flex items so they line up nicely, there's a little hack. The trick is to add a few invisible flex items, with `0px` default cross dimension.
 
 Our mark up looks like this:
 
@@ -623,7 +623,9 @@ including eleven articles without the magic class that includes an images and a 
 		border-width: 0 1px;
 	}
 
-We add several _magic_ flex items. You have to ensure you zero out the cross-dimension box model properties while maintaining the properties contributing to the main-size. In this case, we maintain the left and right border widths and padding while zeroing out the top and bottom border widths and padding. In this case, we want the magic flex items to be the same width as all the other flex items, while ensuring they have a height of 0px if they end up on a flex line filled only with magic flex items.
+We add several _magic_ flex items. You have to ensure you zero out the cross-dimension box model properties while maintaining the properties contributing to the main-size. In this case, we maintain the left and right border widths and padding while zeroing out the top and bottom border widths and padding. In this case, we want the magic flex items to be the same width as all the other flex items, while ensuring they have a height of 0px, in the case they end up on a flex line filled only with magic flex items. 
+
+The magic flex items on the last flex line containing content will be as wide as the flex items on the previous flex line. The last flex line will contain one or more magic flex items, which is OK. The width of the magic flex items will be the same as all the other flex items, but the height is 0px, so that line takes up no space.
 
 Note this is a hack, but it works.
 
