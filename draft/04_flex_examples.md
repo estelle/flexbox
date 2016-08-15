@@ -98,14 +98,14 @@ We lay the site out for smaller devices, then alter the appearance for larger sc
 
 ![Slightly different layouts based on device width](img/4/excample_01_3views.gif)
 
-By default, sectioning elements are displayed block, taking up 100% of the width, so there is no reason to declare the following if we are following source order appearance: 
+By default, sectioning elements are displayed block, taking up 100% of the width. For our layout, there may appear to be no reason to declare the following: 
 
     body {
       display: flex;
       flex-direction: column;
     }
 
-Though we could have, and the design would have looked the same. We include it in the wider version so we can reorder the navigation. The `nav` in the source code comes after the `main` content, which is what we want for narrow viewports, screen readers and our search engine friends. Visually, in wider browsers, we'll reorder it, which we'll cover in a bit. For the narrow viewport, we only need to focus on the layout of the navigation:
+When we declare this, the layout looks the same: we don't need it for the narrow layout. We include it for the wider version in which we reorder the navigation. The `nav` in the source code comes after the `main` content, which is what we want for narrow viewports, screen readers and our search engine friends. Visually, in wider browsers, we'll reorder it, which we'll cover in a bit. For the narrow viewport, we only need flex for the layout of the navigation:
 
     nav {
       display: flex;
@@ -114,7 +114,9 @@ Though we could have, and the design would have looked the same. We include it i
       flex: auto;
     }
 
-The five links of the navigation, based on how we marked it up, appear by default on one line, but with no layout styling, with the widths based on the width of the text content.  With flex display: flex on the nav and flex: auto on the links themselves, the flex items grow to take up 100% of the width. Had we used:
+The five links of the navigation, based on how we marked it up, appear by default on one line, with the widths based on the width of the text content.  With flex `display: flex` on the nav and `flex: auto` on the links themselves, the flex items grow to take up all the available horizontal space. 
+
+Had we declared:
 
     nav {
       display: block;
@@ -125,15 +127,15 @@ The five links of the navigation, based on how we marked it up, appear by defaul
       box-sizing: border-box;
     }
 
-it would have caused all the links to be the exact same width. This would not have looked good if at 80% width with four links, or dropping onto two lines with six links.
-
-With all the links set to `flex: auto;`, the extra space available when all the content is accounted for, is divided equally among the links. With all the links having the same growth and shrink factors, the if all the links had the same amount of left and right padding, with the "padding" width changing dynamically based on the available space, shrinking to appear as if a negative padding were set if there isn't enough room for all the links.. 
+all the links to be the exact same width -- 20% of the parent. This looks perfect if we have exactly 5 links, but isn't robust: adding or dropping a link would ruin the layout.
 
 Remember, when flex basis is `0`, the available space of the container (not just the extra space), is distributed proportionally based on the growth factors present. This is not what we want in this case. We want the longer content to take up more space than the shorter content. In the case of `flex-basis: auto;`, the **extra space** is distributed proportionally based on the flex growth factors. 
 
+With all the links set to `flex: auto;`, the extra space available when all the content is accounted for, is divided equally among the links. All the links have the same growth and shrink factors. The links in the <nav> will look like they all have equal left and right padding, with the "padding" changing dynamically based on the available space. 
+
 #### Wider screen layout
 
-For devices with limited real estate, we wanted to content to appear before the links, aside, nav and footer. When we have more real estate available, we want the navigation bar to follow the header, and the article and aside to share the main area, side-by-side.
+For devices with limited real estate, we want to content to appear before the links, aside, nav and footer. When we have more real estate available, we want the navigation bar to be directly below the header, and the article and aside to share the main area, side-by-side.
 
 While all the CSS for the responsive layout change is posted above, the important lines include:
 
@@ -160,13 +162,15 @@ While all the CSS for the responsive layout change is posted above, the importan
 
 We used media queries to define a new layout when the viewport is 30rem wide or greater. We defined the value in rems instead of pixels to improve the accessibility of the page for users increasing the font size. For most users with devices less than 500px wide, which is approximately 30rem when a rem is the default 16px, the narrow layout will appear. However, if a user has increased their font size, they may get the narrow layout on their tablet or even desktop monitor. 
 
-While we could have turned the `body` into a column-direction flex container, with only sectioning level children, that's the default layout, so it wasn't necessary on the narrow screen. However, when we have wider viewports, we want the navigation to be between the header and main, not between main and footer, so we need to change the order of the appearance. We set `nav, header { order: -1px; }` to make the header and nav appear before all their sibling flex items. The siblings default to the greater value of `order: 0;` which is the default. They group order puts those two elements first, in the order of the source code, before all the other flex item siblings, which appear after, in the order they appear in the source code.
+While we could have turned the `body` into a column-direction flex container, with only sectioning level children, that's the default layout, so it wasn't necessary on the narrow screen. However, when we have wider viewports, we want the navigation to be between the header and the main, not between main content and the footer, so we need to change the order of the appearance. We set `nav, header { order: -1px; }` to make the `<header>` and `<nav>` appear before all their sibling flex items. The siblings default to the greater value of `order: 0;` which is the default. They group order puts those two elements first, in the order of the source code, before all the other flex item siblings, which appear after, in the order they appear in the source code.
 
-We did want to prevent the layout from getting too wide as the navigation links would get too wide, and long lines of text are hard to read. We limit the width of the layout to 75rems, again, using rems to allow the page to grow or shrink if the user grows or shrinks their font size by zooming in or out. With a `margin: auto;` the body is centered within the viewport, which is only noticeable once the viewport is wider than 75rems. This isn't necessary, but demonstrates that flex containers do listen to width declarations.
+We did want to prevent the layout from getting too wide as the navigation links would get too wide, and long lines of text are hard to read. We limit the width of the layout to 75rems, again, using rems to allow the page to grow or shrink if the user grows or shrinks the font size. With a `margin: auto;` the body is centered within the viewport, which is only noticeable once the viewport is wider than 75rems. This isn't necessary, but demonstrates that flex containers do listen to width declarations.
 
-We turn the `main` into a flex container with `display: flex`. It has 2 children. The `article` with `flex: 75%` and `aside` with `flex: 25%` will fit side by side as their combined flex bases equals 100%. 
+We turn the `main` into a flex container with `display: flex`. It has two children. The `article` with `flex: 75%` and `aside` with `flex: 25%` will fit side-by-side as their combined flex bases equals 100%. 
 
-Had the `nav` been a child of `main` instead of `body`, `main` would have had 3 children squished onto one line. We would have wanted the `nav` to come first, on it's own line. We would have had to force the flex container to allow it's children to wrap over two lines. We could have resolved `nav` being a child of `main` by including:
+Had the `nav` been a child of `main` instead of `body`, `main` would have had 3 children squished onto one line. We would have wanted the `nav` to come first, on it's own line. We would have made the navigation take up the full width of the parent `main`, wrapping the other two children onto the next flex line. We can force the flex container to allow it's children to wrap over two lines with the `flex-wrap` property. 
+
+We could have resolved `nav` being a child of `main` by including:
 
     main {
       flex-wrap: wrap;
@@ -178,7 +182,7 @@ Had the `nav` been a child of `main` instead of `body`, `main` would have had 3 
 
 To ensure the `nav` was on it's own line, we would have included a flex basis value of 100% with `flex: 100%;`. The `order: -1` would have made it display before its sibling `aside` and `article`. 
 
-Our HTML is slightly different: instead of an article and an aside, we have three sections in the `main` part of the page.
+In our next example, our HTML is slightly different: instead of an `article` and an `aside`, we have three `section`s in the `main` part of the page.
 
 
 ## Power Grid Home Page
