@@ -191,7 +191,9 @@ With flexbox for layout, if we add three articles to the home page describing 3 
 
 ![Power grid home page](img/1/01_powergrid_store_or_homepage.png)[::LINK::](http://localhost/flexfiles/41_homepage.html)
 
-We can make those articles' width proportional to their content, or make them all the same width, forcing them to be as tall as the article with the most content, all while making sure the call to action buttons are flush to the bottom of the containing articles (that are all the same height).
+On a narrow screen, the articles are all in one column.  On wider screens, we can lay those three articles next to each other in text direction. Using flex, by default, those three articles are the same height. That's what we want.  We can make those articles' width proportional to their content, or make them all the same width, forcing them to be as tall as the article with the most content, all while making sure the call to action buttons are flush to the bottom of the containing articles. 
+
+This is the underlying HTML:
 
     <body>
       <header>
@@ -240,14 +242,13 @@ We have the same basic CSS for the inner page layout as we do for this home page
       width: 100%; 
     }
     
-We code mobile first, which gives us the look of figure ?. We start off with very little CSS needed for the mobile version.  By default, everything is laid out as if we had set flex: column, with the exception of the navigation, which needs to be `display: flex` for the control we need. 
+We code mobile first, which gives us the look of figure ?. We start off with very little CSS needed for the mobile version.  By default, everything is laid out as if we had set flex: column. The only place we need to create a flex container is the navigation, which needs to be `display: flex` for the control we need. 
 
-We want all the links in the navigation to be the same width, so we can't default to a flex of being allowed to grow but not shrink with a basis of `auto`. We declared `flex: 0%` on all the links which equally distributes all the container's space to the items, no matter how many we have. We could have also declared `flex: 1 1 0%;`, `flex: 15 78 0%;`, or `flex: 18;` to get the same effect.
+We want all the links in the navigation to be the same width, no matter the number of characters, so we need to use `0` for the basis.  We declared `flex: 0%` on all the links which equally distributes all the container's space to the items, no matter how many we have. We could have also declared `flex: 1 1 0%;`, `flex: 15 78 0%;`, or `flex: 18;` to get the same effect - as long as the same value was used on all the flex children.
 
-To create links that are proportional to their content, we would have set the flex-basis to `auto` with no inherited `width` value. When supported, we'll be able to use `content`.
+To create links that are proportional to their content, we would have set the flex-basis to `auto` with no inherited `width` value. When supported, we'll be able to use `content` as the `flex-basis` value.
 
 We also added a button width of 100%.
-
 
     @media screen and (min-width: 40em) {
         body, main, section {
@@ -261,27 +262,23 @@ We also added a button width of 100%.
         }
       }
 
-On wider screens we want the navigation to appear on top, and we want the three sections to be the same height with the images on top and button on the bottom.
+We turned the navigation into a flex container in the previous code snipped for all screen sizes.
 
-We turned the navigation into a flex container in the previous code snipped for all screen sizes. On large screens we create three new flex containers: 1) the &lt;body> needs to be turned into a flex container so we can reorder the children to make the &lt;nav> appear between the &lt;header> and the &lt;main> content. 2) the &lt;main> area needs to be a flex container so the three &lt;section>s be side-by-side and of equal height, and  3) Each same-height &lt;section> needs to be a flex container so enable lining up the buttons on the bottom. 
+On wider screens we want the navigation to appear on top, and we want the three sections to be the same height with the images on top and button on the bottom. On large screens we create three new flex containers: 1) the &lt;body> needs to be turned into a flex container so we can reorder the children to make the &lt;nav> appear between the &lt;header> and the &lt;main> content. 2) the &lt;main> area needs to be a flex container so the three &lt;section>s be side-by-side and of equal height, and  3) Each same-height &lt;section> needs to be a flex container so enable lining up the buttons on the bottom. 
 
 We add `flex-direction: column` to the &lt;body> and each &lt;section>, but not &lt;main> or &lt;nav>, which we allow to default to `flex-direction: row`.  
 
-##### body
+Turning the &lt;body> into a flex container wasn't necessary when the nav appeared on the bottom as this is where it appears in the source order. However, on wider screens we want the navigation to appear above the &lt;main> content, not below it. By turning the &lt;body> into a flex container the children -- the &lt;header>, &lt;main>, &lt;nav> and &lt;footer>, -- are orderable flex items. 
 
-Turning the &lt;body> into a flex container wasn't necessary when the nav appeared on the bottom as it does in the source order. However, on large screens we want the navigation to appear above the &lt;main> content, not below it. This way the &lt;header>, &lt;main>, &lt;nav> and &lt;footer>, being children of &lt;body>, are orderable flex items. By default, all flex items are `order: 0;`. We put both the &lt;header> and &lt;nav> into the same ordinal group, coming before &lt;main> and &lt;footer>.
+By default, all flex items are `order: 0;`. In the last section of the wide screen media query, we put both the &lt;header> and &lt;nav> into the same ordinal group, making them appear before &lt;main> and &lt;footer>.
 
-        main > section > p {
-          flex: 1;
-        }
- 
 We have to put both the header and nav, not just nav, into this lower numbered ordinal group, as if we had just set the nav to -1, it would have come before the header. Remember from the [order property](link to order property), flex items will be displayed in order-modified document order, starting from the lowest numbered ordinal group and going up, flex items appearing in order by ordinal group, with the items in each ordinal group appearing in source order.
 
 Note that the keyboard user, navigating thru the page, will tab thru the main content before tabbing thru the navigation, as the tab order is the same as the source order.
 
 Because we turned the &lt;body> into a flex container to enable the appearance of a reordering, we had to declare `flex-direction: column;` to maintain the look and feel.  
 
-##### main
+XXXX
 
 On the home page, we want the three sections of the main area to appear side-by-side, stretched to all be equal height.  We set `display: flex;` on &lt;main> globally. Similar to &lt;body>, there should only be one main section per page. If we're using a site-wide style sheet, this declaration should still be okay: but if we don't have multi-column layout for the inner pages, we should change the first selector to `body, .home main, section`. 
 
