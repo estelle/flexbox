@@ -131,11 +131,11 @@ all the links to be the exact same width -- 20% of the parent. This looks perfec
 
 Remember, when flex basis is `0`, the available space of the container (not just the extra space), is distributed proportionally based on the growth factors present. This is not what we want in this case. We want the longer content to take up more space than the shorter content. In the case of `flex-basis: auto;`, the **extra space** is distributed proportionally based on the flex growth factors. 
 
-With all the links set to `flex: auto;`, the extra space available when all the content is accounted for, is divided equally among the links. All the links have the same growth and shrink factors. The links in the <nav> will look like they all have equal left and right padding, with the "padding" changing dynamically based on the available space. 
+With all the links set to `flex: auto;`, the extra space available when all the content is accounted for, is divided equally among the links. All the links have the same growth and shrink factors. The links in the `<nav>` will look like they all have equal left and right padding, with the "padding" changing dynamically based on the available space. 
 
 #### Wider screen layout
 
-For devices with limited real estate, we want to content to appear before the links, aside, nav and footer. When we have more real estate available, we want the navigation bar to be directly below the header, and the article and aside to share the main area, side-by-side.
+For devices with limited real estate, we want the content to appear before the links, aside, nav and footer. When we have more real estate available, we want the navigation bar to be directly below the header, and the article and aside to share the main area, side-by-side.
 
 While all the CSS for the responsive layout change is posted above, the important lines include:
 
@@ -264,21 +264,21 @@ We also added a button width of 100%.
 
 We turned the navigation into a flex container in the previous code snipped for all screen sizes.
 
-On wider screens we want the navigation to appear on top, and we want the three sections to be the same height with the images on top and button on the bottom. On large screens we create three new flex containers: 1) the &lt;body> needs to be turned into a flex container so we can reorder the children to make the &lt;nav> appear between the &lt;header> and the &lt;main> content. 2) the &lt;main> area needs to be a flex container so the three &lt;section>s be side-by-side and of equal height, and  3) Each same-height &lt;section> needs to be a flex container so enable lining up the buttons on the bottom. 
+On wider screens we want the navigation to appear on top, and we want the three sections to be the same height with the images on top and button on the bottom. On large screens we create three new flex containers: 1) the `<body>` needs to be turned into a flex container so we can reorder the children to make the `<nav>` appear between the `<header>` and the `<main>` content. 2) the `<main>` area needs to be a flex container so the three `<section>`s be side-by-side and of equal height, and  3) Each same-height `<section>` needs to be a flex container so enable lining up the buttons on the bottom. 
 
-We add `flex-direction: column` to the &lt;body> and each &lt;section>, but not &lt;main> or &lt;nav>, which we allow to default to `flex-direction: row`.  
+We add `flex-direction: column` to the `<body>` and each `<section>`, but not `<main>` or `<nav>`, which we allow to default to `flex-direction: row`.  
 
-Turning the &lt;body> into a flex container wasn't necessary when the nav appeared on the bottom as this is where it appears in the source order. However, on wider screens we want the navigation to appear above the &lt;main> content, not below it. By turning the &lt;body> into a flex container the children -- the &lt;header>, &lt;main>, &lt;nav> and &lt;footer>, -- are orderable flex items. 
+Turning the `<body` into a flex container wasn't necessary when the nav appeared on the bottom as this is where it appears in the source order. However, on wider screens we want the navigation to appear above the `<main>` content, not below it. By turning the `<body>` into a flex container the children -- the &lt;header>, &lt;main>, &lt;nav> and &lt;footer>, -- are orderable flex items. 
 
-By default, all flex items are `order: 0;`. In the last section of the wide screen media query, we put both the &lt;header> and &lt;nav> into the same ordinal group, making them appear before &lt;main> and &lt;footer>.
+By default, all flex items are `order: 0;`. In the last section of the wide screen media query, we put both the `<header>` and &lt;nav> into the same ordinal group, making them appear before `<main>` and `<footer>`.
 
 We have to put both the header and nav, not just nav, into this lower numbered ordinal group, as if we had just set the nav to -1, it would have come before the header. Remember from the [order property](link to order property), flex items will be displayed in order-modified document order, starting from the lowest numbered ordinal group and going up, flex items appearing in order by ordinal group, with the items in each ordinal group appearing in source order.
 
 Note that the keyboard user, navigating thru the page, will tab thru the main content before tabbing thru the navigation, as the tab order is the same as the source order.
 
-Because we turned the &lt;body> into a flex container to enable the appearance of a reordering, we had to declare `flex-direction: column;` to maintain the look and feel.  
+Because we turned the `<body>` into a flex container to enable the appearance of a reordering, we had to declare `flex-direction: column;` to maintain the look and feel.  
 
-On the home page, we want the three `section`s of the `main` area to appear side-by-side, stretched to all be equal height.  We set `display: flex;` on `&lt;main>` globally. Similar to `&lt;body>`, there should only be one `&lt;main>` per page. If we're using a site-wide style sheet, this declaration should still be okay: but if we don't have multi-column layout for the inner pages, we should change the first selector list to read `body, .home main, section`. 
+On the home page, we want the three `section`s of the `main` area to appear side-by-side, stretched to all be equal height.  We set `display: flex;` on `<main>` globally. Similar to `<body>`, there should only be one `<main>` per page. If we're using a site-wide style sheet, this declaration should still be okay: but if we don't have multi-column layout for the inner pages, we should change the first selector list to read `body, .home main, section`. 
 
 We didn't declare `flex-direction: row;` as that is the default, so isn't necessary. Similarly, we could have declared `align-items: stretch`, but there was no need to as it's also the default. If you remember from the [align-items property](link to the align-items property), by default flex items stretch to be height of the flex line. This is what we want: we want the sections to be the same height, no matter their content.
 
@@ -389,7 +389,7 @@ In our first example, in figure ?, we want the sticky footer to always be presen
     overflow: scroll;
 	}
 
-We set the height to always be exactly the height of the viewport with `height: 100vh`. We dictate that the `header` and `footer` can neither grow nor shrink, but rather must always be the height of the content. The `&lt;main>` can both grow and shrink, absorbing all the distributable space, if any, scrolling if too tall.
+We set the height to always be exactly the height of the viewport with `height: 100vh`. We dictate that the `header` and `footer` can neither grow nor shrink, but rather must always be the height of the content. The `<main>` can both grow and shrink, absorbing all the distributable space, if any, scrolling if too tall.
 
 In our second example, if we are OK with the footer being out of view, below the page fold, we set the the minimum height is 100vh, and dictate the &lt;main> can grow, but is not required to shrink. 
 
@@ -450,7 +450,7 @@ The above is an "implicit label": there is no `for` attribute, as the form contr
 		flex: 0 0 auto;
 	}
 
-We turn the label into an inline-flex container and set the flex items to be vertically centered within that container. By default, the width of the inline flex container is the width of the content. We therefore specifically declare how wide we want the `&lt;small>` to be, and then set it to not grow or shrink, but be exactly the size of the `width` property by declaring `flex: 0 0 auto;`.
+We turn the label into an inline-flex container and set the flex items to be vertically centered within that container. By default, the width of the inline flex container is the width of the content. We therefore specifically declare how wide we want the `<small>` to be, and then set it to not grow or shrink, but be exactly the size of the `width` property by declaring `flex: 0 0 auto;`.
 
 Now that you know how that is done, don't do it.
 
@@ -499,7 +499,7 @@ With a little flex box magic, we turn this heading, unordered list and ordered l
 		flex-wrap: wrap;
 	}
 	
-The shell `&lt;article>`, with a class of `.calendar`, is turned into into a flex container 75% of the width of the parent. We also reset our counter every time we encounter a new calendar. The `&lt;ol>` of dates and `&lt;ul>` of days are both flex items and flex containers. Only the ordered list of dates is allowed to wrap onto multiple lines.
+The shell `<article>`, with a class of `.calendar`, is turned into into a flex container 75% of the width of the parent. We also reset our counter every time we encounter a new calendar. The `<ol>` of dates and `<ul>` of days are both flex items and flex containers. Only the ordered list of dates is allowed to wrap onto multiple lines.
 
 	.calendar ol:before {
 		content: '';
@@ -526,7 +526,7 @@ The shell `&lt;article>`, with a class of `.calendar`, is turned into into a fle
 		flex: 0 0 85.5%;
 	}
 	
-With both the `&lt;ol>` and `&lt;ul>` being flex containers, every `&li>` is a flex item. There are 7 days in a week, so we set each day and date to be 14.25%, or one seventh, of the width of the parent. We do want the first day of the month to fall in the correct location, so we add a generated content flex item to preceded the `&lt;ol>` of dates. 
+With both the `<ol>` and `<ul>` being flex containers, every `<li>` is a flex item. There are 7 days in a week, so we set each day and date to be 14.25%, or one seventh, of the width of the parent. We do want the first day of the month to fall in the correct location, so we add a generated content flex item to preceded the `<ol>` of dates. 
 
 If you recall from [chapter ?](link to # Flex Container), the children of flex containers are flex items, including generated content. The width of this pre-date box depends on the class of the calendar and is set by the flex basis of that `ol:before` declaration. This is what we used to make sure the first day of the month falls under the right day of the week. Declared a Sunday class is not necessary, as the flex-basis will default to `auto`, and with no content and no width set on the `generated` content, the basis will be `0px`.
 
@@ -557,7 +557,7 @@ We make the days a little darker than the dates, and enable the text to shrink w
 		content: counter(calendar);
 	}
 
-Finally, we add the date to the dates. Earlier we removed the `&lt;ol>` counter with `list-style-type: none;` set on both the `&lt;ol>` and `&lt;ul>`. We add the date back to each list item with generated content. The `counter-increment: calendar;` declaration increments the counter we called `calendar`. Instead of adding an empty `content: ''` which is commonly used for styling, and is used in our day spacer on the first flex line, we set `content: counter(calendar);`, which provides the current value of the counter as the content of the generated content. 
+Finally, we add the date to the dates. Earlier we removed the `<ol>` counter with `list-style-type: none;` set on both the `<ol>` and `<ul>`. We add the date back to each list item with generated content. The `counter-increment: calendar;` declaration increments the counter we called `calendar`. Instead of adding an empty `content: ''` which is commonly used for styling, and is used in our day spacer on the first flex line, we set `content: counter(calendar);`, which provides the current value of the counter as the content of the generated content. 
 
 	.calendar ol li {
 		text-align: right;
@@ -592,7 +592,7 @@ The code is several `article`s nested within a `main`. Each article has an image
 		min-width: 200px;
 	}
 	
-We turn the `&lt;main>` parent into a flex container, with the flex items able to wrap over as many lines as need be.
+We turn the `<main>` parent into a flex container, with the flex items able to wrap over as many lines as need be.
 
 We set the flex basis on ALL the flex items to the same number: the convention is one. This is the same as setting `flex: 1 0 0%;`. While the basis may be 0, the minimum width a flex item can grow to is 200px, and they can't grow to wider than 300px. This is a good way of developing responsive content. 
 
