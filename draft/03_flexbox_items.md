@@ -1,15 +1,15 @@
 # Flex items
 ========================
 
-In the previous chapters, we learned how to globally layout all the flex items within a flex container by adding flex box property values to that container. The flex box specification provides several additional properties applicable directly to DOM node flex items [XXX check if generated content are DOM nodes XXX]. With these flex item specific properties, we can more precisely control the layout of the flex container's DOM node children.  
+In the previous chapters, we learned how to globally layout all the flex items within a flex container by adding flex box property values to that container. The flex box specification provides several additional properties applicable directly to DOM node and generated content flex items. With these flex item specific properties, we can more precisely control the layout of the flex container's DOM node children.  
 
 ![Figure ?: Items with `display: flex;` become **flex containers**, and their non-absolutely positioned children become **flex items**](img/3/01_flexitems.png) [::LINK::](30_flexitems.html) [XXX Please bold or italicize text betweeen the asterisks]
 
-Now that we have a good understanding of the properties applicable to the flex container, it's time focus on properties applicable to the flex items.
+Now that we have a good understanding of the properties applicable to the flex container, it's time to focus on properties applicable to the flex items.
 
 ## What are Flex Items
 
-We create flex containers simply by adding a `display: flex` or `display: inline-flex` to an element that has child nodes. The children of those flex container are called 'flex items', be they DOM nodes, non-empty text-nodes or generated content. 
+We create flex containers simply by adding a `display: flex` or `display: inline-flex` to an element. The children of those flex container are called 'flex items', be they DOM nodes, non-empty text-nodes or generated content. 
 
 When it comes to text-node children of flex containers, if the text node is not empty --  containing content other than white-space -- it will be wrapped in an anonymous flex item, behaving like its flex item siblings. While these anonymous flex items do inherit all the flex properties set by the flex container, just like their DOM node siblings, they are not directly targetable with CSS. Therefore, we can't directly set any of the flex item specific properties on them. 
 
@@ -33,7 +33,7 @@ Example 1:
       </ul>
     </nav>
 
-In the above code, with it's `display` property set to `flex`, the unordered list is the flex container, and it's child list items are all flex items. These list items, being flex items, are flex-level boxes, semantically still list items, but not list items in their presentation. They are not block-level boxes either. Rather, they participate in their container’s flex formatting context. The white space is ignored. The links, which are descendants of the flex items, are not impacted by in inclusion of flex display on their parent's parent. 
+In the above code, with it's `display` property set to `flex`, the unordered list is the flex container, and it's child list items are all flex items. These list items, being flex items, are flex-level boxes, semantically still list items, but not list items in their presentation. They are not block-level boxes either. Rather, they participate in their container’s flex formatting context. The white space is ignored. The links, which are descendants of the flex items, are not impacted by in inclusion of flex display on their grandparent. 
 
 ### Flex Item Features
 
@@ -56,7 +56,7 @@ Code Example 2:
         Some text
     </aside>
 
-In example 2 , the `aside` is the flex container. The comment and white-space only text nodes are ignored. The text node containing "some text" is wrapped in an anonymous flex item.  The header, image and text node containing "some text" are all flex items. As the image is a flex item, the `float` is ignored. Even though images and text nodes are inline-level nodes, being flex items, (as long as they are not absolutely positioned) [XXX is () correct?] they are blockified.
+In example 2 , the `aside` is the flex container. The comment and white-space only text nodes are ignored. The text node containing "some text" is wrapped in an anonymous flex item.  The header, image and text node containing "some text" are all flex items. As the image is a flex item, the `float` is ignored. Even though images and text nodes are inline-level nodes, being flex items, they are blockified.
 
 Code Example 3:
 
@@ -78,7 +78,7 @@ In example 3, the markup is similar to the code in example 2, with the addition 
 
 While a value of `float: left` or `float: right` on the child of a flex container will do nothing -- as the child is a flex item and the `float` is ignored -- setting `position: absolute` is a different story. The absolutely-positioned children of flex containers, just like any other absolutely positioned element, are taken out of the flow of the document. 
 
-They do not get converted to flex items. They are not in the document flow. They do not participate in flex layout. However, they can be impacted by the properties set on the flex container, just like a child can be impacted by a parent element that isn't a flex container. The parent's properties impact the origin of the positioning. [XXX rework this sentence]
+They do not get converted to flex items. They are not in the document flow. They do not participate in flex layout. However, they can be impacted by the properties set on the flex container, just like a child can be impacted by a parent element that isn't a flex container. The parent’s alignment properties impact the static position of the absolute positioned flex item.
 
 The absolutely positioned child of a flex container is impacted by both the `justify-content` value of the parent flex container and its own `align-self` value, if there is one. For example, if you set `align-content: center;` on the absolutely-positioned child, it will by default be centered on the flex container parent's cross-axis. The `order` property may not impact where the absolutely positioned flex container child is drawn, but it does impact the order of when it is drawn in relation to its siblings.
 
