@@ -721,11 +721,11 @@ In our third example, the `flex-basis: auto` item wraps over three lines. The CS
       flex: 0 1 80%;
     }
 
-We declared the the `flex-basis` of the three flex items to be 70%, auto, and 80%, respectively. Remembering that "auto" is about 110px and our flex container is 540px in our scenario, the bases are the equivalent of:
+We declared the the `flex-basis` of the three flex items to be 70%, auto, and 80%, respectively. Remembering that "auto" is about 110px, which is the width of the text, the `min-content` in this `flex-basis: auto` scenario and our flex container is 540px in our example, the bases are the equivalent of:
 
 	item1 = 70% * 540px = 378px 
-	item2 = widthOfText("flex-basis: auto") = 110px
-	item3 = 80% * 540px  =  432px  
+	item2 = mincontent  = 110px
+	item3 = 80% * 540px = 432px  
 
 In this third example we have an item with a basis of 70%. This means the basis is 70% of the parent's 540px width, or 378px. The second item is set to `auto`, which in this case means 110px because of the width of the content. Lastly, we have flex item with a basis of 80%, meaning 80% of 540px, or 432px. When we add these three flex items, they have total combined with of 920px, that needs to fit into a flex container that is 540px wide. We have 380px of negative space to remove proportionally among the three flex items. To figure out the ratio, we divide the available width of our flex container by the sum of widths of the flex items that they would have if they couldn't shrink:
 
@@ -1023,6 +1023,8 @@ To change the visual order of a flex item, set the `order` property value to a n
 
 The value of the `order` property specifies which ordinal group the flex item belongs to.  Any flex items with a negative value will appear to come before those defaulting to `0` when drawn to the page, and all the flex items with a positive value will appear to come after those defaulting to `0`. While visually altered, the source order remains the same. Screen readers and tabbing order remains as defined by the source order of the HTML.
 
+> Note:  Failure to maintain consistent source order can be confusing to keyboard and assistive technology users. Search engines, screen readers and keyboard navigation go thru content in the HTML source order, ignoring visual order. 
+
 ![Setting `order` to any value other than `0`, will reorder that flex item](images/order_01.tiff)
 
 For example, if you have a group of 12 items, and you want the seventh to come first and the sixth to be last, you would declare:
@@ -1065,6 +1067,8 @@ Setting the same `order` value to more than one flex item, the items will appear
 Items with the same ordinal group are laid out in the order they appear in the source document. This reordering is purely visual. Screen readers should read the document as it appeared in the source code. As a visual change, ordering flex items impacts the painting order of the page: the painting order of the flex items is the order in which they appear, as if they were reordered in the source document, which they aren't.
 
 Changing the layout with the `order` property has no effect on the tab order of the page. If the numbers in Figure ? were links, tabbing thru the links would go thru the links in the order of the source code, not in the order of the layout. While it might be intuitive that the link order in figure ? would be 1, 4, 7, 10, 3, 6, 9, 12, 2, 5, 8 and 11, tabbing through the links will actually take you in order from 1 through 12. 
+
+While it may be easy and performant, do not use the `order` if you are making a meaningful changes. For example, if you are reversing directions on Google maps when getting directions, while it may be tempting to simply change the `order` of both the to and from directions, this will only create a  visual change and will be inaccessible to the screen reader and confusing to those navigating via keyboard.
 
 #### Tabbed navigation revisited
 
