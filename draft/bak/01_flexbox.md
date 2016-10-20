@@ -15,9 +15,7 @@ Layout on the web has been a challenge for many. Challenging layout has long inc
 
 ![Figure 1d. Button with many components neatly vertically centered](img/1/01_inline_flex_agree_button.png)[::LINK::](http://localhost/flexfiles/button.html)
 
-In the past, multi-column layouts were created by floating each column, with each column being a predetermined width and differing heights dependent on the column's content. While you can use faux background images with this multi-column layout solution, or the `table` value of the `display` property, flexbox is a simple way to make the columns equal in height, with the width dependent on the columns relative content. Other than tables, which should not be used for layout, there was no way to make all the columns equal in height without actually declaring a height, risking lots of white space or overflowing content.
-
-> Note: Tables should not be used for layout for many reasons, including the fact that table layout is not semantic, difficult to updated if your layout changes, can be challenging to make accessible, adds to code bloat, and makes it more difficult to copy text. That said, tables are appropriate for tabular data. 
+In the past, multi-column layouts were created by floating each column, with each column being a predetermined width and differing heights dependent on the column's content. Other than using tables for layout - which is a no-no - there was no way to make the columns equal in height, with the width dependent on the columns relative content. Other than tables, which should not be used for layout, there was no way to make all the columns equal in height without actually declaring a height, risking lots of white space or overflowing content.
 
 The [holy-grail layout](https://en.wikipedia.org/wiki/Holy_Grail_(web_design), with a header, 3-columns, and a footer, could be solved in many way, none of them simple, until we had flexbox: 
 
@@ -52,11 +50,11 @@ OUTPUT:
 
 ![Figure 2. Holy Grail layout without Flexbox](img/1/01_float_layout.png)[::LINK::](flexfiles/float_layout.html)
 
-Most designs call for columns of equal heights, but adding backgrounds to the above aside, article and nav would actually amplify that there are differing heights. To provide for the appearance of equal-height columns, we often added a faux-background to the parent based on the column widths declared in our CSS, as shown in figure 2. 
+Most designs call for columns of equal heights, but adding backgrounds to the above aside, article and nav would actually enunciate the differing heights. To provide for the appearance of equal-height columns, we often added a faux-background to the parent based on the column widths declared in our CSS, as shown in figure 2. 
 
 To ensure the parent was at least as tall as the floated columns, most developers added a 'clearfix' as generated content after the last column, though providing the parent with a width of 100% and floating it as well was an equally viable solution. 
 
-A `clearfix` is a class that can be added to your CSS and then to any element to ensure it fully contains its floated children by adding diplayed block or table generated invisible content and clearing it, thereby clearing everything above it: 
+A `clearfix` is a class that can be added to your CSS and then to any element to ensure it fully contains its floated children.
 
     .clearfix:after {
         content: ".";
@@ -74,9 +72,7 @@ A `clearfix` is a class that can be added to your CSS and then to any element to
       clear: both;
     }
 
-When using this technique, an additional block descendant is inserted into the container and ensure that it is clear of any floats in the inline or block direction. This forces the block size of the container, that has the .clearfix applied, to include the heights of the floats (these dimensions are normally not included since floats are removed from the flow). 
-
-The method I used instead of adding a clearfix class and generated content was to take advantage of the fact that with CSS all floated elements must be at least as tall as its tallest floated descendant. By making the parent 100% wide and floating it, it would be alone on it's own line while being at least as tall as it's tallest nested floated descendant. This floating method of clearing was supported in browsers well before archaic versions of Internet Explorer began supporting generated content.
+In CSS, all floated elements must be at least as tall as its tallest floated descendant.  This floating method of clearing was supported in browsers well before archaic versions of Internet Explorer began supporting generated content.
 
     main {
       width: 100%;
@@ -87,9 +83,7 @@ The above layout is actually uglier that what is shown in figure 2. I added padd
 
 Between collapsing margins and dropping floats, the old layout method could be downright confusing. Many people started using YUI grids, Bootstrap, Foundation, 960 grid, and other CSS grid libraries to simplify their development process. 
 
-The [CSS Flexible Box Module Level 1](http://www.w3.org/TR/css-flexbox-1/), or Flexbox for short, makes the once difficult task of laying out your page, widget, application or gallery almost simple. With Flexbox, layout is so simple you won't need a CSS framework. Widgets, carousels, responsive features -- whatever your designer dreams up -- will be a cinch to code.  And, while flexbox layout libraries have already popped up, instead of adding bloat to your markup, read this book, and learn how, with a few lines of CSS, you can create almost any responsive feature your site requires. 
-
-Note that flexbox was designed for a specific type of layout, that of single dimensional, content distribution. While you can create grid-like layouts with flexbox, there is a [Grid specification](XXX link to grid specification), which with improved support, will be the [correct way of creating grids](link to Eric's grid chapter).
+The [CSS Flexible Box Module Level 1](http://www.w3.org/TR/css-flexbox-1/), or Flexbox for short, makes the once difficult task of laying out your page, widget, application or gallery almost simple. With Flexbox, layout is so simple you won't need a CSS framework. Widgets, carousels, responsive features -- whatever your designer dreams up -- will be a cinch to code.  And, while flexbox layout libraries are sure to pop up, instead of adding bloat to your markup, read this book, and learn how, with a few lines of CSS, you can create almost any responsive layout your site requires. 
 
 ### Simple Solutions 
 
@@ -97,9 +91,7 @@ Flexbox is a simple and powerful way to layout web applications or sections of d
 
 Flexbox is a declarative way to calculate and distribute space. Multi-column layouts are a breeze even if you don't know how many columns your content will have. Flexbox enables you to be confident your layout wont break when you dynamically generate more content or when your user stretches or shrinks there browser or switches from portrait to landscape mode. 
 
-With flexbox, visually rearranging content without impacting the underlying markup is easy. With flexbox, the appearance of content can be independent of source order. Though visually altered, flex properties should not impact the order of how the content is read by screen readers.![^1]
-
-[^1] Screen readers following source order is in the specification, but Firefox currently follows the visual order. There is discussion in the accessibility community that this Firefox "bug" may be the correct behavior. It is possible that this spec may change.
+With flexbox, visually rearranging content without impacting the underlying markup is easy. With flexbox, the appearance of content can be independent of source order. Though visually altered, flex properties do not impact the order of how the content is read by screen readers.
 
 And, importantly, with flexible box module layouts, elements can be made to behave predictably for different screen sizes and different display devices. Flexbox works well for responsive sites, as content can increase and decrease in size when the space provided is increased or decreased.
 
@@ -121,9 +113,9 @@ Flexbox defines a formatting context along with properties to control layout. Wh
 
 Elements that aren't flexed, and are also not-absolutely positioned, have layout calculations biased to block and inline flow directions. Flex layout, on the other hand, is biased to the flex directions. The `flex-flow` value determines how content is mapped to the top, right, bottom, left, along a horizontal or vertical axes and by width and height.
 
-Once you set an element to be a flex container, its children follow the flexbox rules for layout instead of the standard block, inline and inline-block rules. Within a flex container items line up on the "main-axis". The _main-axis_ can either be horizontal or vertical so you can arrange items into columns or rows. The main axis takes on the directionality set via the writing-mode: this will be discussed in depth later on. 
+Once you set an element to be a flex container, its children follow the flexbox rules for layout instead of the standard block, inline and inline-block rules. Within a flex container items line up on the "main-axis". The _main-axis_ can either be horizontal or vertical so you can arrange items into columns or rows. 
 
-In the next sections we'll cover how to make a flex container using the `display` property, then explain the various flex container properties to distribute and align flex items within the flex container. Once we've covered the properties applied to the flex container, we'll colver the properties applied directly to the flex items. We'll learn how to make the children of flex containers shrink and grow, and we'll discuss the properties applied to the those children that enable them to override the distribution and alignment globally set on all the flex items by the parent flex container.
+We'll cover how to make a flex container using the `display` property, then explain the various flex container properties to distribute and align flex items within the flex container. Once we've covered the flex containers properties, we'll take a look at the properties applied directly to the flex items: flex properties that enable children to shrink and grow and properties applied to the children of flex containers that enable them to override the distribution and alignment globally set on all the flex items by the parent flex container.
 
 ### The `display` property
 
@@ -197,7 +189,7 @@ Two new values for the `display` property have been added in the [CSS Flexible B
 
 Simply adding either of these `display` property values on an element turns the element into a flex container and the element's children into flex items. The children are all the same height, even if their contents would produce elements of different heights, as shown in figure ?.
 
-> The default appearance that is created simply by adding these `display` values is similar to setting a container width to 100% and floating it and all its children to the left, or using the `.clearfix` method, but better. The children still fit on a single line, even if they may have wrapped if truly floated. And, just as how floated elements are at least as tall as their tallest floated children, the container will be tall enough to encompass its children. 
+> The default appearance that is created simply by adding these `display` values is similar to floating the container and all its children to the left, but better. The children still fit on a single line, even if they may have wrapped if truly floated. And, just as how floated elements are at least as tall as their tallest floated children, the container will be tall enough to encompass its children. 
 
 The `inline-flex` value will be only as wide as declared, or as wide as one column if `flex-direction` is set to `column` (defined next), or as wide as it needs to be if no `width`, `min-width` or `max-width` is set. The `flex` value of the `display` property behaves like a block element in this regards, defaulting to 100% width.
 
@@ -251,7 +243,7 @@ While there are similarities, flex containers are different from block container
 
 The first important notion to fully understand is that of 'flex container', also known as 'container box'. The element on which `display: flex;` or `display: inline-flex;` is applied becomes a flex formatting context for the containing box's children. This element is known as the 'flex container.' Once we have created a flex container by adding a `display: flex` or `display: inline-flex`, we need to learn how to manipulate the layout of the container's children. 
 
-The children of this container box are 'flex items'.  They are called 'flex items' whether they are DOM nodes, text-nodes or generated content. Note that absolutely positioned flex items are flex items that are sized and positioned as though they are the only flex item in the flex container.
+The children of this container box are 'flex items'.  They are called 'flex items' whether they are DOM nodes, text-nodes or generated content, as long as they are not absolutely positioned. 
 
 We will first learn all about the CSS properties that apply to the flex container, including several properties that impact the layout of flex items. Flex items themselves are a major concept you need to grok, and will be [covered in full](link to flex items chapter) after we have a full understanding of the flex container and its associated CSS properties.
 
@@ -307,7 +299,7 @@ As long as `display` is set to `flex` or `inline-flex`, omitting `flex-flow`, `f
 
 ![Figure ?: `flex-flow: row;`](img/1/03_flexflowrow.png)[::LINK::](http://localhost/flexfiles/04_flexflow.html)
 
-In left to right writing modes, declaring any of the above or omitting the `flex-flow` property altogether, will create  a flex container with a horizontal main axis that doesn't wrap, as shown in in figure ?. Figure ? shows flex items distributed along the horizontal axis, on one line, overflowing the 500px-width container. 
+Declaring any of the above or omitting the `flex-flow` property altogether, will create  a flex container with a horizontal main axis that doesn't wrap, as shown in in figure ?. Figure ? shows flex items distributed along the horizontal axis, on one line, overflowing the 500px-width container. 
 
 So, what exactly does all this mean? While the specification's authors encourage the use of the `flex-flow` shorthand, understanding `flex-wrap` and `flex-direction`, the two properties that make up this shorthand, is necessary. And, by learning about the values that make up the `flex-flow` shorthand, we'll learn how to fix the unsightly layout shown in figure ?. 
 
@@ -390,7 +382,7 @@ In horizontal writing modes, which includes left-to-right (LTR) and right-to-lef
 
 The `row-reverse` value is the same as `row`, except the flex items are laid out in the opposite direction of the text direction: the start and end points are reversed. The direction of the _main-axis_ of the flex container is  reversed by the `row-reverse` value. For left-to-right languages, like English, `row-reverse` will layout all the flex items side to side from right to left, horizontally, with _main-start_ being on the right and _main-end_ now on the left. These are shown in figure ?. 
 
-Had the direction of the page or flex container been reversed, such as for Hebrew or Arabic, with the attribute `dir="rtl"` on the flex container or an ancestor in the HTML, or with `direction: rtl` on the flex container or container's ancestor in the CSS, the direction of the `row-reverse` main axis, and therefore the flex items, is inverted from the default, going left to right. Similarly, the `writing-mode` property impacts the direction in which the flex items are drawn to the page.
+Had the direction of the page or flex container been reversed, such as for Hebrew or Arabic, with the attribute `dir="rtl"` on the flex container or an ancestor in the HTML, or with `direction: rtl` on the flex container or container's ancestor in the CSS, the direction of the `row-reverse` main axis, and therefore the flex items, is inverted from the default, going left to right.
 
 The `column` value will layout the flex items from top to bottom. The `column` value sets the flex container's _main-axis_ to be the same orientation as the block axis of the current writing mode. This is the vertical axis in horizontal writing modes and the horizontal axis in vertical writing modes. Basically, it sets the flex-container's _main-axis_ to vertical in most cases, with the exception of Bopomofo, Egyptian Hieroglyphs, Hiragana, Katakana, Han, Hangul, Meroitic Cursive and Hieroglyphs, Mongolian, Ogham, Old Turkic, Phags Pa, Yi and sometimes Japanese. With `column`, the flex items are displayed in the same order as declared in the source document, but from top to bottom instead of left to right, so the flex items are laid out one on top of the next instead of side by side. 
 
@@ -483,7 +475,7 @@ By simply adding a few lines of CSS, we've got a nicely laid out home page, as s
 
 It took two CSS property/value declarations to create the basic layout for a site home page.
 
-Obviously there was some additional CSS. We added border, margin and padding to all the elements so you can differentiate the flex items for the sake of learning (I wouldn't put that less-that-attractive site in production). Otherwise, all we've done is simply declare the body, navigation, main and articles as flex containers, so the navigation, links, main, article, images, paragraphs and buttons are all flex items. Yes, elements can be both flex items while being flex containers, as we see with the navigation, main and articles in this case. The `body` and `article`s have `column` set as their flex directions, and we let `nav` and `main` default to `row`.  Just 2 lines of CSS!
+Obviously there was some additional CSS. We added border, margin and padding to all the elements so you can differentiate the flex items for the sake of learning (I wouldn't put that less-that-attractive site in production). Otherwise, all we've done is simply declare the body, navigation, main and articles as flex containers, so the navigation, links, main, article, images, paragraphs and buttons are all flex items. Yes, elements can be both flex items while being flex containers, as we see with the navigation, main and articles in this case. The body and articles have `column` set as their flex directions, and we let &lt;nav&gt; and &t;main&gt; default to `row`.  Just 2 lines of CSS!
 
 But what happens when the flex items' _main-dimension_ (their combined widths for `row` or combined heights for `column`) don't fit within the flex container? We can either have them overflow, as shown in fgure ?, or we can allow them to wrap onto additional flex lines.
 
@@ -523,7 +515,7 @@ No
 
 ---
 
-The `flex-wrap` property controls whether the flex container is limited to being a single-line container or is allowed to become multi-line if needed.  When the `flex-wrap` property is set to allow for multiple flex lines, whether the vlaue of `wrap` or `wrap-reverse` was set determines whether additional lines appear after or before the original line of flex items.
+The `flex-wrap` property controls whether the flex container is limited to being a single-line container or is allowed to become multi-line if needed.  The `flex-wrap` property can also be used to determine the direction of the _cross-axis_, which determines whether additional lines appear after or before the original line of flex items.
 
 By default, no matter how many flex items there are, all the flex items are drawn on a single line. This is often not what we want. That's where `flex-wrap` comes into play. The `wrap` and `wrap-reverse` values allow the flex items  to wrap onto additional flex lines when the constraints of the parent flex container are reached.
 
@@ -761,7 +753,7 @@ How your flex layout appears on the screen is determined in part by interactions
 
 When thinking about `flex-direction`, we now know the flex items are going to start being laid out across the main axis of the flex container, starting from the _main-start_. The _cross_ directions come into play when it comes to adding additional lines of flex items, known as `_flex lines_`. When the `flex-wrap` property is used to allow the container to wrap if the flex items don't fit onto one line, the _cross_ directions determine the direction of additional liners in multi-line flex containers. 
 
-As we learned in the  [`flex-wrap` section](link to flex wrap above) of the [`flex-flow` shorthand](link to flex-flow) overview above, the flex items can be set to wrap to additional lines if they would otherwise be wider or taller than the _main size_ of the container. While the laying out of the flex items on each flex line is done in the main direction, going from _main-start_ to _main-end_, the wrapping to additional lines is done along the cross direction, from _cross-start_ to _cross-end_. 
+As we learned discussed in the  [`flex-wrap` section](link to flex wrap above) of the [`flex-flow` shorthand](link to flex-flow) overview above, the flex items can be set to wrap to additional lines if they would otherwise be wider or taller than the _main size_ of the container. While the laying out of the flex items on each flex line is done in the main direction, going from _main-start_ to _main-end_, the wrapping to additional lines is done along the cross direction, from _cross-start_ to _cross-end_. 
 
 ![Figure ?: Flex lines on row and row-reverse when `flex-wrap: wrap` is set ](img/1/05_flex_lines_row.png)
 
