@@ -278,7 +278,7 @@ Note that the keyboard user, navigating thru the page, will tab thru the main co
 
 Because we turned the &lt;body> into a flex container to enable the appearance of a reordering, we had to declare `flex-direction: column;` to maintain the look and feel.  
 
-On the home page, we want the three `section`s of the `main` area to appear side-by-side, stretched to all be equal height.  We set `display: flex;` on `&lt;main>` globally. Similar to `&lt;body>`, there should only be one `&lt;main>` per page. If we're using a site-wide style sheet, this declaration should still be okay: but if we don't have multi-column layout for the inner pages, we should change the first selector list to read `body, .home main, section`. 
+On the home page, we want the three `section`s of the `main` area to appear side-by-side, stretched to all be equal height.  We set `display: flex;` on `&lt;main>` globally. Similar to `&lt;body>`, there should only be one `&lt;main>` per page. If we're using a site-wide style sheet, this declaration should still be okay: but if we don't have multiple column layout for the inner pages, we should change the first selector list to read `body, .home main, section`. 
 
 We didn't declare `flex-direction: row;` as that is the default, so isn't necessary. Similarly, we could have declared `align-items: stretch`, but there was no need to as it's also the default. If you remember from the [align-items property](link to the align-items property), by default flex items stretch to be height of the flex line. This is what we want: we want the sections to be the same height, no matter their content.
 

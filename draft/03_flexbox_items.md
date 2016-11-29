@@ -901,7 +901,7 @@ In these two examples, there was no `width` set on the flex items. By default, f
 
 ![](img/3/07_content_example2.png)[:LINK:](flexfiles/37_flexshrink_0.html)
 
-How can this help in practice? While in theory the similar height columns we get with `auto` seems like a good idea, in reality controlling the widths of the columns in a multi-column layout is likely a greater priority, as demonstrated by the difference in the two layouts in figure ?.
+How can this help in practice? While in theory the similar height columns we get with `auto` seems like a good idea, in reality controlling the widths of the columns in a multiple column layout is likely a greater priority, as demonstrated by the difference in the two layouts in figure ?.
 
 The first example's flex basis is based on the content. For the navigation, the longest line is the link with the longest content. If the article or aside contained a line break in the long and longer paragraphs, their widths would change. In the second example, the nav and aside will always each be 22% of the width of the main area, unless they contain a component that is wider than 22%. The main article will be 56% of the width. You can include a `min-width` on any or all of the items to ensure the layout never gets too narrow, or you can use media queries to let the components drop on very narrow screens. So many options!
 
