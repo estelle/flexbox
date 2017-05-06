@@ -631,7 +631,7 @@ Note this is a hack, but it works.
 
 ### Performance
 
-While flexbox is a brilliant solution to all of your layout problems, [Jake Archibald has argued](http://jakearchibald.com/2014/dont-use-flexbox-for-page-layout/) you shouldn't use it for laying out your entire application.
+While flexbox is a brilliant solution to many of your layout problems, [Jake Archibald has argued](http://jakearchibald.com/2014/dont-use-flexbox-for-page-layout/) when it comes to laying out your entire application, you may want to consider using Grids instead of flexbox once grid is better supported.
 
 Browsers don't wait for all of your content to finish loading before rendering content. Rather, they progressively render content as it arrives enabling users to access your content before it is fully downloaded. With some flexbox layouts, however, your content may experience horizontal shifting and content misalignment on slower connections.
 
