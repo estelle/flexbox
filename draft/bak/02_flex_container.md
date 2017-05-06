@@ -152,6 +152,50 @@ We could have centered that navigation:
 ![Changing the layout with one property value pair](img/2/07_justify_content_nav_center.png)[::LINK::](http://localhost/flexfiles/07_nav_displayflex_center.html)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### The `align-items` property
 
 Whereas the `justify-content` defines how flex items are aligned along the flex container's _main-axis_, the `align-items` property defines how flex items are aligned along its flex line's _cross-axis_.
@@ -279,9 +323,57 @@ In all the examples, we increased the font size for J to `3rem` to create a flex
 
 The `align-items` property is set on the flex container and impacts all of the flex items within that flex container. If you want to change the alignment of one or more flex items, but not all, you can include the `align-self` property on the flex items you would like to align differently. The `align-self` takes the same values as `align-items`, and is discussed in the next chapter. 
 
-You cannot override the alignment for anonymous flex items (non-empty text node children of flex containers): their `align-self` always matches the value of `align-items` of their parent flex container.
+You can not override the alignment for anonymous flex items (non-empty text node children of flex containers): their `align-self` always matches the value of `align-items` of their parent flex container.
 
 In the `align-items` examples, the flex container's _cross-size_ was as tall as it needed to be. No `height` was declared on the container, so it defaulted to `height: auto`. Because of this, the flex box grew to fit the content. Had the _cross-size_, in this case the height, been set to a specific size, there may have been been extra space, or not enough space, to fit the content. Flex box allows us to control the alignment of flex lines with the `align-content` property. The `align-content` property is the last property we need to focus on that applies to the flex container (versus the flex items). The `align-items` property only impacts flex line alignment in multi-line flex containers.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
 ## The `align-content` property
@@ -400,7 +492,7 @@ Declaring `align-content: center` groups the flex lines together, so they are fl
 
 When `align-content: space-between` is set, the flex lines are evenly distributed in the flex container. The 'even distribution' is based on the available space, not the size of the lines. 
 
-If we remember back to `justify-content: space-between`, the first flex item is flush against _main-start_. The second flex item, if there is one, is flush against _main-end_. The rest of the flex items, if there are any, are spread out with equal amounts of the free space distributed between the flex items. This is similar to how `align-content: space-between` works. If there is more than one flex line, the first line will be flush against the container's _cross-start_, the last line will be flush against the container's _cross-end_ and the available extra space is distributed evenly between the additional lines, if there are any. The extra space is distributed evenly, not proportionally.  The space between any two flex lines within the flex container is equal: even if the _cross-sizes_ of the multiple flex lines differ. 
+If we remember back to `justify-content: space-between`, the first flex item is flush against _main-start_. The second flex item, if there is one, is flush against main end. The rest of the flex items, if there are any, are spread out with equal amounts of the free space distributed between the flex items. This is similar to how `align-content: space-between` works. If there is more than one flex line, the first line will be flush against the container's _cross-start_, the last line will be flush against the container's _cross-end_ and the available extra space is distributed evenly between the additional lines, if there are any. The extra space is distributed evenly, not proportionally.  The space between any two flex lines within the flex container is equal: even if the _cross-sizes_ of the multiple flex lines differ. 
 
 > Only flex containers with multiple lines can have free space in the _cross-axis_ for lines to be aligned in.  If there is only one line, the `align-content` property will not impact the distribution of the content. In flex containers with a single line of flex items, the lone line stretches to fill the space. 
 

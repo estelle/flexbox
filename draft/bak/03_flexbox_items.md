@@ -1,7 +1,7 @@
 # Flex items
 ========================
 
-In the previous chapters, we learned how to globally layout all the flex items within a flex container by adding flexbox property values to that container. The flex box specification provides several additional properties applicable directly to DOM node flex items [XXX check if generated content are DOM nodes XXX]. With these flex item specific properties, we can more precisely control the layout of the flex container's DOM node children.  
+In the previous chapters, we learned how to globally layout all the flex items within a flex container by adding flex box property values to that container. The flex box specification provides several additional properties applicable directly to DOM node and generated content flex items. With these flex item specific properties, we can more precisely control the layout of the flex container's DOM node children.  
 
 ![Figure ?: Items with `display: flex;` become **flex containers**, and their non-absolutely positioned children become **flex items**](img/3/01_flexitems.png) [::LINK::](30_flexitems.html) [XXX Please bold or italicize text betweeen the asterisks]
 
@@ -9,7 +9,7 @@ Now that we have a good understanding of the properties applicable to the flex c
 
 ## What are Flex Items
 
-We create flex containers simply by adding a `display: flex` or `display: inline-flex` to an element that has child nodes. The children of those flex container are called 'flex items', be they DOM nodes, non-empty text-nodes or generated content. 
+We create flex containers simply by adding a `display: flex` or `display: inline-flex` to an element. The children of those flex container are called 'flex items', be they DOM nodes, non-empty text-nodes or generated content. 
 
 When it comes to text-node children of flex containers, if the text node is not empty --  containing content other than white-space -- it will be wrapped in an anonymous flex item, behaving like its flex item siblings. While these anonymous flex items do inherit all the flex properties set by the flex container, just like their DOM node siblings, they are not directly targetable with CSS. Therefore, we can't directly set any of the flex item specific properties on them. 
 
@@ -33,7 +33,7 @@ Example 1:
       </ul>
     </nav>
 
-In the above code, with it's `display` property set to `flex`, the unordered list is the flex container, and it's child list items are all flex items. These list items, being flex items, are flex-level boxes, semantically still list items, but not list items in their presentation. They are not block-level boxes either. Rather, they participate in their container’s flex formatting context. The white space is ignored. The links, which are descendants of the flex items, are not impacted by in inclusion of flex display on their parent's parent. 
+In the above code, with it's `display` property set to `flex`, the unordered list is the flex container, and it's child list items are all flex items. These list items, being flex items, are flex-level boxes, semantically still list items, but not list items in their presentation. They are not block-level boxes either. Rather, they participate in their container’s flex formatting context. The white space is ignored. The links, which are descendants of the flex items, are not impacted by in inclusion of flex display on their grandparent. 
 
 ### Flex Item Features
 
@@ -56,7 +56,7 @@ Code Example 2:
         Some text
     </aside>
 
-In example 2 , the `aside` is the flex container. The comment and white-space only text nodes are ignored. The text node containing "some text" is wrapped in an anonymous flex item.  The header, image and text node containing "some text" are all flex items. As the image is a flex item, the `float` is ignored. Even though images and text nodes are inline-level nodes, being flex items, as long as they are not absolutely positioned, they are blockified.
+In example 2 , the `aside` is the flex container. The comment and white-space only text nodes are ignored. The text node containing "some text" is wrapped in an anonymous flex item.  The header, image and text node containing "some text" are all flex items. As the image is a flex item, the `float` is ignored. Even though images and text nodes are inline-level nodes, being flex items, they are blockified.
 
 Code Example 3:
 
@@ -78,7 +78,7 @@ In example 3, the markup is similar to the code in example 2, with the addition 
 
 While a value of `float: left` or `float: right` on the child of a flex container will do nothing -- as the child is a flex item and the `float` is ignored -- setting `position: absolute` is a different story. The absolutely-positioned children of flex containers, just like any other absolutely positioned element, are taken out of the flow of the document. 
 
-They do not get converted to flex items. They are not in the document flow. They do not participate in flex layout. However, they can be impacted by the properties set on the flex container, just like a child can be impacted by a parent element that isn't a flex container. The parent's properties impact the origin of the positioning. [XXX rework this sentence]
+They do not get converted to flex items. They are not in the document flow. They do not participate in flex layout. However, they can be impacted by the properties set on the flex container, just like a child can be impacted by a parent element that isn't a flex container. The parent’s alignment properties impact the static position of the absolute positioned flex item.
 
 The absolutely positioned child of a flex container is impacted by both the `justify-content` value of the parent flex container and its own `align-self` value, if there is one. For example, if you set `align-content: center;` on the absolutely-positioned child, it will by default be centered on the flex container parent's cross-axis. The `order` property may not impact where the absolutely positioned flex container child is drawn, but it does impact the order of when it is drawn in relation to its siblings.
 
@@ -92,12 +92,11 @@ If you set the `min-width` to a width narrower than the computed value of auto -
 
 ![Figure ?: The three values of `flex-wrap` property with `min-width: 0` set](img/3/01_minwidthzero.png)[::LINK::](30_flexwrap_3.html) 
 
-
-### The `flex` property
-
 While the flex items alignment, order and flexibility are to some extent controllable via properties set on their parent flex container, there are several properties that can be applied to individual flex items for more granular control. 
 
 The `flex` shorthand property, along with its component properties of `flex-grow`, `flex-shrink` and `flex-basis`, control the flexibility of the flex items. The `align-self` helps control a flex items alignment. The `order` property provides for more granular control of the visual ordering of individual or groups of flex items. All of these properties are discussed below.
+
+### The `flex` property
 
 The defining aspect of flex layout is the ability to make the flex items “flex”: altering their width or height to fill the available space in the main dimension. A flex container distributes free space to its items proportional to their flex grow factor, or shrinks them to prevent overflow proportional to their flex shrink factor. 
 
@@ -149,9 +148,7 @@ The flex basis determines how the flex growth and shrink factors are implemented
 
 In the above code snippet, the flex item will have a _main-size_ of exactly 200px as the flex basis is 200px, and it is neither allowed to grow or shrink.
 
-It is important to understand the three components that make up the `flex` shorthand property, which is the property you should be employing. The reason it is advised to use `flex` rather than its three individual sub properties is becaue the spec (and therefore the browser) resets any missing `flex` values to sensible defaults, which are not always the individaul property defaults. 
-
-To ensure you fully grok `flex`, let's deep dive into its three components. 
+It is important to understand the three components that make up the `flex` shorthand property, which is the property you should be employing. To ensure you fully grok `flex`, let's deep dive into its three components. 
 
 The order of `flex` is important, with the first float number being the growth factor:
 
@@ -192,7 +189,7 @@ The value specifies the growth factor, which determines how much the flex item w
 
 For example, with the `750px` wide horizontal flex container with three flex items all set to `width: 100px`, as in the four examples in figure ?, you can dictate none, one, two, or all three of the flex items to grow to fill the extra `450px` of available space. 
 
-As noted when we discussed (min-width)[link to min-width section] above, if no width or flex basis is set, the flex basis defaults to `auto`, meaning each flex item basis is the width of its non-wrapped content. `auto` is a special value: it defaults to content unless the item has a width set on it at which point the flex-basis becomes that width. The [`auto` value](link to auto) is disussed below. Had we not set the width, in this example scenario, with our smallish font size, we would had more than 450px of distributable space along the _main-axis_. 
+As noted when we discussed (min-width)[link to min-width section] above, if no width or flex basis is set, the flex basis defaults to `auto`, meaning each flex item basis is the width of its non-wrapped content. Had we not set the width, in this example scenario, with our smallish font size, we would had more than 450px of distributable space along the _main-axis_. 
 
 > The examples in this section describe the basics of the growth factor. The main size of a flex item is impacted by the available space, the growth factor of all the flex items, as well as the flex basis of the item. We have yet to cover flex-basis. We will revisit both the growth and shrink factors and these examples when we learn about [flex basis](link to basis below).  
 
@@ -603,9 +600,7 @@ The global values of `initial` resets the flex basis to the initial value of `au
 
 The `content` keyword value is [not supported in most browsers](http://code.google.com/p/chromium/issues/detail?id=470421) at the time of this writing, with the exception of Microsoft Edge 12+, but is equal to the width or height of the content.  When `content` is used and supported, the basis is the size of the flex item's content - the value being the main size of the longest line of content or widest (or tallest) media object. 
 
-Until support is complete, `flex-basis: content;` can be easily polly-filled as it is the equivalent of declaring `flex-basis: auto; width: auto;` on that flex item, or `flex-basis: auto; height: auto;` if the _main-dimension_ is vertical. Unfortunately, using `content` in the shorthand in non-supporting browsers invalidates the entire `flex` declaration[!^1].  
-
-[^1]The entire declaration is invalidated when any value is not understood as per the specificiation:. https://drafts.csswg.org/css-flexbox/#conform-partial
+Until support is complete, `flex-basis: content;` can be easily polly-filled as it is the equivalent of declaring `flex-basis: auto; width: auto;` on that flex item, or `flex-basis: auto; height: auto;` if the _main-dimension_ is vertical. Unfortunately, using `content` in the shorthand in non-support browsers invalidates the entire `flex` declarations.  
 
 The value of `content` is basically what we saw in [figure ?](referring to figure img/3/03_flexshrink_multiplelines.png).
 
@@ -726,11 +721,11 @@ In our third example, the `flex-basis: auto` item wraps over three lines. The CS
       flex: 0 1 80%;
     }
 
-We declared the the `flex-basis` of the three flex items to be 70%, auto, and 80%, respectively. Remembering that "auto" is about 110px and our flex container is 540px in our scenario, the bases are the equivalent of:
+We declared the the `flex-basis` of the three flex items to be 70%, auto, and 80%, respectively. Remembering that "auto" is about 110px, which is the width of the text, the `min-content` in this `flex-basis: auto` scenario and our flex container is 540px in our example, the bases are the equivalent of:
 
 	item1 = 70% * 540px = 378px 
-	item2 = widthOfText("flex-basis: auto") = 110px
-	item3 = 80% * 540px  =  432px  
+	item2 = mincontent  = 110px
+	item3 = 80% * 540px = 432px  
 
 In this third example we have an item with a basis of 70%. This means the basis is 70% of the parent's 540px width, or 378px. The second item is set to `auto`, which in this case means 110px because of the width of the content. Lastly, we have flex item with a basis of 80%, meaning 80% of 540px, or 432px. When we add these three flex items, they have total combined with of 920px, that needs to fit into a flex container that is 540px wide. We have 380px of negative space to remove proportionally among the three flex items. To figure out the ratio, we divide the available width of our flex container by the sum of widths of the flex items that they would have if they couldn't shrink:
 
@@ -901,7 +896,7 @@ In these two examples, there was no `width` set on the flex items. By default, f
 
 ![](img/3/07_content_example2.png)[:LINK:](flexfiles/37_flexshrink_0.html)
 
-How can this help in practice? While in theory the similar height columns we get with `auto` seems like a good idea, in reality controlling the widths of the columns in a multiple column layout is likely a greater priority, as demonstrated by the difference in the two layouts in figure ?.
+How can this help in practice? While in theory the similar height columns we get with `auto` seems like a good idea, in reality controlling the widths of the columns in a multi-column layout is likely a greater priority, as demonstrated by the difference in the two layouts in figure ?.
 
 The first example's flex basis is based on the content. For the navigation, the longest line is the link with the longest content. If the article or aside contained a line break in the long and longer paragraphs, their widths would change. In the second example, the nav and aside will always each be 22% of the width of the main area, unless they contain a component that is wider than 22%. The main article will be 56% of the width. You can include a `min-width` on any or all of the items to ensure the layout never gets too narrow, or you can use media queries to let the components drop on very narrow screens. So many options!
 
@@ -926,7 +921,7 @@ The following CSS was used to create the second example:
     }
   }
 
-We'll [cover this example again](link to the example within the `order` section) when we discuss the `order` property. Quickly: in the markup the nav is last, and it will come last on a viewport that is less than 500px wide. On wider screens that have room for the 3-columns, it will come first in appearance. Screen readers will still read it in source order (except in Firefox at the moment). Tabbing will still make it appear last.
+We'll [cover this example again](link to the example within the `order` section) when we discuss the `order` property next. Quickly: in the markup the nav is last, and it will come last on a viewport that is less than 500px wide. On wider screens that have room for the 3-columns, it will come first in appearance. Screen readers will still read it in source order. Tabbing will still make it appear last.
 
 
 #### Sticky-footer with `flex`
@@ -986,47 +981,7 @@ The main will not shrink to be less tall then the left navigation even though it
 
 The links would have been able to shrink, and, with a flex-basis of 0, would have shrunk, enabling the `main` to shrink further, leaving room for the footer to be at its declared height.
 
-### The `align-self` property
 
-The `align-self` property is used to override the `align-items` property value on a per flex item basis.
-
----
-
-`align-items`
-
- **Values:**
-
-auto | flex-start | flex-end | center | baseline | stretch
-
- **Initial value:**
-
-auto 
-
- **Applies to:**
-
- flex items
-
- **Inherited:**
-
-No
-
- ** Percentages:**
-
-not applicable
-
- **Animatable:**
-
-No
-
----
-
-With the `align-items` property, set on the flex container, you can align all the flex items of that container to the start, end or center of the _cross-axis_ of their flex line. The `align-self` property, which is set directly on the flex items, you can override the `aligns-items` property on a pre-flex-item basis.  
-
-You can overwrite the alignment of any individual flex item with the `align-self` property, as shown in [figure ?](nextimage).The default value of `auto` is the value of `align-items` on the element’s flex container parent.  Note the default value of `align-items` is `stretch`.
-
-![You can overwrite the alignment of any individual flex item with the `align-self` property. Note the default value of `align-items` is `stretch`. ](img/3/08_alignself.png)[:LINK:](flexfiles/38_alignself.html)
-
-To learn more about the other values of `flex-start`, `flex-end`, `center`, `baseline` and `stretch`, see [the `aligns-item` property](link_to_chapter_02. preferably, link the individual property values too).
 
 ### The `order` property
 
@@ -1067,6 +1022,8 @@ The `order` property controls the order in which flex items appear within the fl
 To change the visual order of a flex item, set the `order` property value to a non-zero integer. Setting the `order` property on elements that are not children of a flex container has no effect on that element: the property is basically ignored in that case.
 
 The value of the `order` property specifies which ordinal group the flex item belongs to.  Any flex items with a negative value will appear to come before those defaulting to `0` when drawn to the page, and all the flex items with a positive value will appear to come after those defaulting to `0`. While visually altered, the source order remains the same. Screen readers and tabbing order remains as defined by the source order of the HTML.
+
+> Note:  Failure to maintain consistent source order can be confusing to keyboard and assistive technology users. Search engines, screen readers and keyboard navigation go thru content in the HTML source order, ignoring visual order. 
 
 ![Setting `order` to any value other than `0`, will reorder that flex item](images/order_01.tiff)
 
@@ -1110,6 +1067,8 @@ Setting the same `order` value to more than one flex item, the items will appear
 Items with the same ordinal group are laid out in the order they appear in the source document. This reordering is purely visual. Screen readers should read the document as it appeared in the source code. As a visual change, ordering flex items impacts the painting order of the page: the painting order of the flex items is the order in which they appear, as if they were reordered in the source document, which they aren't.
 
 Changing the layout with the `order` property has no effect on the tab order of the page. If the numbers in Figure ? were links, tabbing thru the links would go thru the links in the order of the source code, not in the order of the layout. While it might be intuitive that the link order in figure ? would be 1, 4, 7, 10, 3, 6, 9, 12, 2, 5, 8 and 11, tabbing through the links will actually take you in order from 1 through 12. 
+
+While it may be easy and performant, do not use the `order` if you are making a meaningful changes. For example, if you are reversing directions on Google maps when getting directions, while it may be tempting to simply change the `order` of both the to and from directions, this will only create a  visual change and will be inaccessible to the screen reader and confusing to those navigating via keyboard.
 
 #### Tabbed navigation revisited
 
