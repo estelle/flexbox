@@ -49,11 +49,25 @@ button {
       text-decoration: none; 
       border: 1px solid #333;
     }
+
+      section > button,
+      section > a {
+      background: linear-gradient(#ccc, #fff);
+      border: 1px solid #ccc;
+      text-decoration: none;
+      color: #666;
+      font-size: 0.75rem;
+      text-align: center;
+      display:inline-block;
+      box-sizing: border-box;
+    }
 /* relevant CSS */
       nav {
         display: flex;
       }
-      img, button {
+      section > img, 
+      section > button,
+      section > a {
         width: 100%; 
       }
       nav a {
@@ -91,7 +105,7 @@ button {
       <section>
         <img alt=""  src="../static/img/unicorn1.jpg">
         <p>This is some awesome content that is on the page.</p>
-        <button>Go Somewhere</button>
+        <a href="somewhere">Go Somewhere</a>
       </section>
       <section>
         <img alt="" src="../static/img/unicorn2.jpg">
@@ -111,6 +125,6 @@ button {
       <a href="#4">Careers</a>
       <a href="#5">Contact Us</a>
   </nav>
-  <footer>Copyright &copy; 2016</footer>
+  <footer>Copyright &copy; 2017</footer>
 </body>
 </html>

@@ -23,29 +23,42 @@
   .calendar ol {
     flex-wrap: wrap;
   }
-  .calendar ol:before {
+  .calendar ol:before,
+  .calendar ol:after {
     content: '';
     outline: 1px solid transparent;
     box-sizing:border-box;
     background-color: rgba(0,0,0,0.05);
   }
 
-  .monday ol:before {
+  .monday ol:before,
+  .wednesday.days31 ol:after,
+  .thursday.days30 ol:after {
     flex: 0 0 14.25%;
   }
-  .tuesday ol:before {
+  .tuesday ol:before,
+  .tuesday.days31 ol:after ,
+  .wednesday.days30 ol:after {
     flex: 0 0 28.5%;
   }
-  .wednesday ol:before {
+  .wednesday ol:before,
+  .monday.days31 ol:after,
+  .tuesday.days30 ol:after {
     flex: 0 0 42.75%;
   }
-  .thursday ol:before {
+  .thursday ol:before,
+  .sunday.days31 ol:after,
+  .monday.days30 ol:after {
     flex: 0 0 57%;
   }
-  .friday ol:before {
+  .friday ol:before,
+  .saturday.days31 ol:after,
+  .sunday.days30 ol:after {
     flex: 0 0 71.25%;
   }
-  .saturday ol:before {
+  .saturday ol:before,
+  .friday.days31 ol:after,
+  .saturday.days30 ol:after {
     flex: 0 0 85.5%;
   }
   .calendar ul li {
@@ -79,10 +92,10 @@
 </style>
 </head>
 <body>
-  <article class="calendar thursday">
-  <h1>December 2016</h1>
+  <article class="calendar friday days31">
+  <h1>December 2017</h1>
   <ul class="days">  
-    <li>Sunday</li>
+    <li>Sunday</li> 
     <li>Monday</li>
     <li>Tuesday</li>
     <li>Wednesday</li>

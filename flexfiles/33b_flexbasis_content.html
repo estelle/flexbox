@@ -35,36 +35,37 @@ body {
   text-align: center;
 }
 p {margin-top: 0;}
+b {background-color: rgba(255,255,255,0.3);}
 </style>
 </head>
 <body>
 
 <article>
 <div>
-  <div style="flex-basis: auto">flex-basis: content</div>
-  <div style="flex-basis: auto">flex-basis: content</div>
-  <div style="flex-basis: auto">flex-basis: content</div>
+  <div style="flex-basis: auto"><b>flex-basis: content</b></div>
+  <div style="flex-basis: auto"><b>flex-basis: content</b></div>
+  <div style="flex-basis: auto"><b>flex-basis: content</b></div>
 </div>
-<p>Flex container⤴</p>
+<p>Equivalent Content⤴</p>
 </article>
 
 <article>
 <div>
   <div style="flex-basis: auto"><b>flex-basis: content</b> is set with a few words</div>
-  <div style="flex-basis: auto; background-color: rgba(0,0,0,0.2);">This has <b>flex-basis: content;</b> and <b>background-color: rgba(0, 0, 0, 0.2);</b> set with a lot of additional text, unlike other flex items across a few lines.</div>
+  <div style="flex-basis: auto; background-color: rgba(0,0,0,0.2);">This has <b>flex-basis: content;</b> and <i>background-color: rgba(0, 0, 0, 0.2);</i> set with a lot of additional text, unlike other flex items across a few lines.</div>
   <div style="flex-basis: auto">This too has <b>flex-basis: content</b> with a medium amount of extra content.</div>
 </div>
-<p>Flex container⤴</p>
+<p>Variable amounts of content⤴</p>
 </article>
 
 
 <article>
 <div>
   <div style="flex: 0 0 auto"><b>flex-basis: content</b> is set with a few words</div>
-  <div style="flex: 0 0 auto; background-color: rgba(0,0,0,0.2);">This has <b>flex-basis: content;</b> and <b>background-color: rgba(0, 0, 0, 0.2);</b> set with a lot of additional text, unlike other flex items across a few lines.</div>
+  <div style="flex: 0 0 auto; background-color: rgba(0,0,0,0.2);">This has <b>flex-basis: content;</b> and <i>background-color: rgba(0, 0, 0, 0.2);</i> set with a lot of additional text, unlike other flex items across a few lines.</div>
   <div style="flex: 0 0 auto">This too has <b>flex-basis: content</b> with a medium amount of extra content.</div>
 </div>
-<p>Flex container⤴ no shrink</p>
+<p>variable contents with no shrink⤴</p>
 </article>
 
 <article>
